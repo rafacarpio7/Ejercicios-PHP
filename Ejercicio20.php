@@ -12,6 +12,7 @@
 
       echo '<img src='.$arrayimg[rand(0,2)] .' >';
       echo "hola";
+      echo "adios";
     
 
     ?>
