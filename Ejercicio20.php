@@ -11,6 +11,7 @@
       $arrayimg = array("logo2.jpeg","logo2.png","portada.png");
 
       echo '<img src='.$arrayimg[rand(0,2)] .' >';
+      echo "hola";
     
 
     ?>
