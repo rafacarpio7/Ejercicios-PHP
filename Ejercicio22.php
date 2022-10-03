@@ -29,10 +29,12 @@ pantalla los nombres y el nuevo salario de los que han sufrido modificaciones. -
         <?php
         function calculoNuevoSalario($nombreP,$edadP,$salarioP){
 
-            if (in_array($nombreP,$arrayEmpleados) {
-                
-                if (1000>$salarioP>2000) {
+            if
+            
+            
+                if (1000>$salarioP  && $salarioP>2000) {
                     if ($edadP>45) {
+
                         $salarioP = $salarioP+ $salarioP*0.04;
                     }else {
                         $salarioP = $salarioP+ $salarioP*0.1;
@@ -40,16 +42,12 @@ pantalla los nombres y el nuevo salario de los que han sufrido modificaciones. -
                 } else {
                     if ($edadP<30) {
                         $salarioP = 1500;
-                    } elseif (30<$edadP<45) {
+                    } elseif (30<$edadP && $edadP<45) {
                         $salarioP = $salarioP+ $salarioP*0.15;
                     }
                     
                 }
 
-            } else {
-                echo "No existe el empleado $nombreP en nuestro array";
-            }
-            
 
             
             
@@ -60,13 +58,17 @@ pantalla los nombres y el nuevo salario de los que han sufrido modificaciones. -
 
     <body>
         <?php
-        $arrayEmpleados = ('CE0001'=>array('nombre'=> "Jose",'edad'=> 22,'salario'=> 2100),
+        $arrayEmpleados = array('CE0001'=> array('nombre'=> "Jose",'edad'=> 22,'salario'=> 2100),
                             'CE0002'=>array('nombre'=> "Pedro",'edad'=> 25,'salario'=> 2200),
                             'CE0003'=>array('nombre'=> "Manuel",'edad'=> 30,'salario'=> 1200),
                             'CE0004'=>array('nombre'=> "Migue",'edad'=> 40,'salario'=> 1600),
                             'CE0005'=>array('nombre'=> "Andres",'edad'=> 18,'salario'=> 1100));
-        print_r($arrayEmpleados);                    
-        calculoNuevoSalario($arrayEmpleados[0][0],$arrayEmpleados[0][1],$arrayEmpleados[0][2]);
+        print_r($arrayEmpleados);  
+        
+        
+        foreach ($arrayEmpleados as $key => $value) {
+            calculoNuevoSalario($value["nombre"],$value["edad"],$value["salario"]);
+        }
 
 
         
