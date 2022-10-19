@@ -73,6 +73,14 @@ class Cuenta
         }
     }
 
+    public function transferencia($cantidad,$cuentaDestino)
+    {
+        $this->reintegro($cantidad);
+        $cuentaDestino->ingreso($cantidad);
+        
+    }
+
+
     function printCaracteristicas($cuentaAImprimir)
     {
         

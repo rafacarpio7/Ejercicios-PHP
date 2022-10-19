@@ -23,6 +23,11 @@ Crea 2 instancias para validar el funcionamiento del programa. -->
     <?php
     include("Cuenta.php");
     $cuentaAyax = new Cuenta("Ajax Gonzalez","ES05-6987-6890-978909876",3.2,3000.00);
+    $cuentaHamza = new Cuenta("HAMZA","ES05-6987-6890-109876542",4.5,6030.00);
+
+
+    $cuentaAyax->printCaracteristicas($cuentaAyax);
+    echo "<br>";
 
     if ($cuentaAyax->ingreso(200)) {
         $cuentaAyax->printCaracteristicas($cuentaAyax);
@@ -30,17 +35,25 @@ Crea 2 instancias para validar el funcionamiento del programa. -->
 
     echo "<br>";
 
-    if ($cuentaAyax->reintegro(3100)) {
+    if ($cuentaAyax->reintegro(200)) {
         $cuentaAyax->printCaracteristicas($cuentaAyax);
     } else {
         echo "No se ha realizado el reintegro";
     }
     
     echo "<br>";
-    
-    
+
+    $cuentaAyax->transferencia(1500,$cuentaHamza);
 
 
+
+
+    $cuentaAyax->printCaracteristicas($cuentaAyax);
+    
+    echo "<br>";
+    $cuentaHamza->printCaracteristicas($cuentaHamza);
+
+    echo "<br>";
     ?>
     
 </body>
