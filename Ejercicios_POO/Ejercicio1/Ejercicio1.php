@@ -34,18 +34,45 @@ d) Método de búsqueda en el array de libros o magazines por autor.
 e) Método de búsqueda en el array de libros o magazines por título. -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio1 POO</title>
 </head>
+
 <body>
 
     <?php
     include("ReadingMaterial.php");
     include("Book.php");
     include("Magazine.php");
+
+    function burbuja($array,$ordenacion,$atributo)
+    {
+        for($i=1;$i<count($array);$i++){
+            for($j=0;$j<count($array)-$i;$j++){
+
+                if ($ordenacion==true) {
+                    if($array[$j]->get_.$atributo()>$array[$j+1]->get_.$atributo()){
+                        $k=$array[$j+1];
+                        $array[$j+1]=$array[$j];
+                        $array[$j]=$k;
+                    }
+                } else {
+                    if($array[$j]->get_.$atributo()<$array[$j+1]->get_.$atributo()){
+                        $k=$array[$j+1];
+                        $array[$j+1]=$array[$j];
+                        $array[$j]=$k;
+                    }
+                }
+                
+                
+            }
+        }
+        return $array;
+    }
     
     
 
@@ -53,8 +80,18 @@ e) Método de búsqueda en el array de libros o magazines por título. -->
     $publisher2 = new Publisher("Hamza","Calle de su prima",685321685,"facebook.com");
 
     $book1 = new Book(12081,"asdasd","dasdasda",234,100,$publisher1);
+
+
     
     $magazine1 = new Magazine("Pagina WEB","dasdasda",234,100,$publisher2);
+
+
+    $libreria = [new Book(12081,"Tolkien","el señor d elos anillos",234,100,$publisher1),
+                new Book(12081,"Perez Reverte","como conoci a tu abuela",132,150,$publisher2),
+                new Book(12081,"Fabri","como huir de latam",563,1020,$publisher2),
+                new Book(12081,"Iker","miedo a las 4 de la tarde",123,200,$publisher2),
+                new Book(12081,"Hamza","soy marroqui",90,190,$publisher1)];
+               
 
 
     echo "<br>";
@@ -62,7 +99,28 @@ e) Método de búsqueda en el array de libros o magazines por título. -->
     echo "<br>";
     print_r($magazine1);
     echo "<br>";
+
+
+
+    echo "<pre>";
+    print_r($libreria);
+    echo "</pre>";
+
+    for($i=1;$i<count($libreria);$i++){
+        for($j=0;$j<count($libreria)-$i;$j++){
+            if($libreria[$j]->get_Price()>$libreria[$j+1]->get_Price()){
+                $aux=$libreria[$j+1];
+                $libreria[$j+1]=$libreria[$j];
+                $libreria[$j]=$aux;
+            }
+        }
+    }
+
+    echo "<pre>";
+        print_r($libreria);
+    echo "</pre>";
 ?>
-    
+
 </body>
+
 </html>

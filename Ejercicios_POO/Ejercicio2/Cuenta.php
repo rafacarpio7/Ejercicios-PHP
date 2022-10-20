@@ -75,8 +75,14 @@ class Cuenta
 
     public function transferencia($cantidad,$cuentaDestino)
     {
-        $this->reintegro($cantidad);
-        $cuentaDestino->ingreso($cantidad);
+        if ($this->reintegro($cantidad)) {
+            $cuentaDestino->ingreso($cantidad);
+            return true ;
+        }else {
+            return false;
+        }
+        
+        
         
     }
 
