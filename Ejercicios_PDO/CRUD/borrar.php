@@ -9,7 +9,7 @@
 <body>
     
     <h1>Borrar alumno</h1>
-    <p style="color:red;"><?php $msg=""?></p>
+    <p style="color:red;"><?$msg=""?></p>
     <form action="borraDatos.php" method="post">
         <fieldset>
             <legend>Datos del alumno a borrar</legend>
