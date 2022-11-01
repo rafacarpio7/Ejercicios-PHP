@@ -94,12 +94,18 @@
                 <td>".$registro['TELEFONO']."</td>
                 <td>".$registro['CORREO']."</td>
                 <td><form action='borraDatos.php'><input type='submit' name='btnBorrar' value='Borrar'></td>
-                <td><input type='hidden' name='cod' value='".$registro['CODIGO']."'></form></td>
-                <td><input type='submit' name='btnModificar' value='Modificar'></td>
-                <td><input type='submit' name='btnCopiar' value='Copiar'></td>
+                <td><input type='hidden' name='cod' value='".$registro['CODIGO']."'></form></td>".
+                /*
+                <td><form action='modificaDatos.php'><input type='submit' name='btnModificar' value='Modificar'></td>
+                <td><input type='hidden' name='cod' value='".$registro['CODIGO']."'>
+                <input type='hidden' name='nombre' value='".$registro['nombre']."'>
+                <input type='hidden' name='apellidos' value='".$registro['apellido']."'>
+                <input type='hidden' name='telefono' value='".$registro['telefono']."'>
+                <input type='hidden' name='correo' value='".$registro['correo']."'></form></td>
+                <td><input type='submit' name='btnCopiar' value='Copiar'></td>*/
                 
 
-            </tr>";
+            "</tr>";
 
     } 
 

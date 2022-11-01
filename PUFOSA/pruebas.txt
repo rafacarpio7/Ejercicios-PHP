@@ -1,0 +1,47 @@
+// empleado_id de PRESIDENTE Y MANAGER
+
+SELECT empleado_id FROM empleados
+INNER JOIN trabajos ON empleados.Trabajo_ID=trabajos.Trabajo_ID
+WHERE trabajos.Funcion LIKE '%MANAGER%' OR '%PRESIDENT%';
+
+
+// empleado_id de PRESIDENTE para informe
+
+SELECT empleado_id FROM empleados
+INNER JOIN trabajos ON empleados.Trabajo_ID=trabajos.Trabajo_ID
+WHERE trabajos.Funcion LIKE '%PRESIDENT%';
+
+//informe de departamentos
+
+SELECT GrupoRegional,COUNT(empleado_id),MAX(Salario),MIN(Salario),AVG(Salario) FROM empleados
+INNER JOIN departamento ON departamento.departamento_ID=empleados.Departamento_ID
+INNER JOIN ubicacion ON ubicacion.Ubicacion_ID=departamento.Ubicacion_ID
+WHERE departamento.Nombre LIKE '%contabilidad%';
+
+SELECT GrupoRegional,COUNT(empleado_id),MAX(Salario),MIN(Salario),AVG(Salario) FROM empleados
+INNER JOIN departamento ON departamento.departamento_ID=empleados.Departamento_ID
+INNER JOIN ubicacion ON ubicacion.Ubicacion_ID=departamento.Ubicacion_ID
+WHERE departamento.Nombre LIKE '%contabilidad%';
+
+SELECT GrupoRegional,COUNT(empleado_id),MAX(Salario),MIN(Salario),AVG(Salario) FROM empleados
+INNER JOIN departamento ON departamento.departamento_ID=empleados.Departamento_ID
+INNER JOIN ubicacion ON ubicacion.Ubicacion_ID=departamento.Ubicacion_ID
+WHERE departamento.Nombre LIKE '%contabilidad%';
+
+SELECT GrupoRegional,COUNT(empleado_id),MAX(Salario),MIN(Salario),AVG(Salario) FROM empleados
+INNER JOIN departamento ON departamento.departamento_ID=empleados.Departamento_ID
+INNER JOIN ubicacion ON ubicacion.Ubicacion_ID=departamento.Ubicacion_ID
+WHERE departamento.Nombre LIKE '%contabilidad%';
+
+SELECT GrupoRegional,COUNT(empleado_id),MAX(Salario),MIN(Salario),AVG(Salario) FROM empleados
+INNER JOIN departamento ON departamento.departamento_ID=empleados.Departamento_ID
+INNER JOIN ubicacion ON ubicacion.Ubicacion_ID=departamento.Ubicacion_ID
+WHERE departamento.Nombre LIKE '%contabilidad%';
+
+SELECT GrupoRegional,COUNT(empleado_id),MAX(Salario),MIN(Salario),AVG(Salario) FROM empleados
+INNER JOIN departamento ON departamento.departamento_ID=empleados.Departamento_ID
+INNER JOIN ubicacion ON ubicacion.Ubicacion_ID=departamento.Ubicacion_ID
+WHERE departamento.Nombre LIKE '%contabilidad%';
+
+
+

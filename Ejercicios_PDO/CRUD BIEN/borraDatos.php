@@ -1,6 +1,6 @@
 
 <?php
-$msg="";
+
 if (isset($_REQUEST['btnBorrar'])) {
     $servername = "localhost";
     $username = "root";
@@ -12,7 +12,7 @@ if (isset($_REQUEST['btnBorrar'])) {
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "SELECT CODIGO FROM ALUMNOS WHERE codigo=:cod;";
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':cod', $_REQUEST['codigo']);
+        $stmt->bindParam(':cod', $_REQUEST['cod']);
         $stmt->execute();
         $registros = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -22,11 +22,7 @@ if (isset($_REQUEST['btnBorrar'])) {
                 $stmt->bindParam(':cod', $_REQUEST['cod']);
                 $stmt->execute();
                 
-        }else {
-            $msg = "No se ha encontrado ningun alumn@ con este codigo:  ".$_REQUEST['codigo'];
-
-        }
-        
+        }        
 
     } catch (PDOException $e) {
         echo 'ERROR '. $e->getMessage();
