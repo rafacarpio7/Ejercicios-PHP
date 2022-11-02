@@ -61,8 +61,8 @@
                 
 
 
-                <td><form action='borraDatos.php'><input type='submit' name='btnBorrar' value='Borrar'></td>
-                <td><input type='hidden' name='cod' value='".$registro['Ubicacion_ID']."'></form></td>
+                <td><form action='borraDatosUbicacion.php'><input type='submit' name='btnBorrar' value='Borrar'></td>
+                <td><input type='hidden' name='codUbicacion' value='".$registro['Ubicacion_ID']."'></form></td>
                 
                 
                 

@@ -18,17 +18,36 @@
         }
     }
 
-        if (isset($_REQUEST['adivinaNumero'])) {
-            echo "hola";
-            if (empty($numAle)) {
+        if (isset($_REQUEST['btnJugada'])) {
+            echo $limiteInferior;
+            echo $limiteSuperior;
+            if (empty($_REQUEST['intentos'])) {
+               $intentos=1;
+            }else {
+                $intentos=$_REQUEST['intentos']+1;
+            }
+            
+            if (empty($_REQUEST['numAle'])) {
                 $numAle = mt_rand($limiteInferior,$limiteSuperior);
             }else {
-                $numAle = $numAle;
+                $numAle = $_REQUEST['numAle'];
+                echo $numAle;
             }
-
+            if ($_REQUEST['adivinaNumero']>$numAle) {
+                $msg='Prueba con un numero mas bajo';
+                echo $msg;
+            } else if($_REQUEST['adivinaNumero']<$numAle){
+                $msg='Prueba con un numero mas alto';
+                echo $msg;
+            } else {
+                $ganado=true;
+            }
+            echo $intentos;
             
-           
-        }    
+            
+        }else {
+            $numAle = mt_rand($limiteInferior,$limiteSuperior);
+        }
      
     ?>
 
@@ -47,7 +66,7 @@
         </fieldset>
 
     </form>
-    <p><?= $_GET['msg']??""?></p>
+    <p><? echo $msg;?></p>
 
 
 </body>
