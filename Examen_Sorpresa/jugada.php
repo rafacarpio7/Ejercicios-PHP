@@ -40,7 +40,7 @@
                 $msg='Prueba con un numero mas alto';
                 echo $msg;
             } else {
-                $ganado=true;
+                header("Location: acierto.php?msg=$intentos");
             }
             echo $intentos;
             

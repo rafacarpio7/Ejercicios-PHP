@@ -13,11 +13,7 @@
 <body>
 
     <h1>Bien Hecho</h1>
-    <?php
-
-    echo "Has realizado un total de ";
-
-    ?>
+    <p>Lo has logrado en <?= $_GET['msg']??" "?> intentos</p>
 
     <button><a href="limites.php">Empezar</a></button>
     
