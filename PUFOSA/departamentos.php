@@ -76,6 +76,7 @@
     echo "</table>";
 
     ?>
+    <p><?= $_GET['msg']??" "?></p>
     
 </body>
 </html>

@@ -59,6 +59,7 @@
     <th>Vendedor</th>
     <th>Limite de Credito</th>
     <th>Comentarios</th>
+    <th><button><a href='añadeClientes.php'>Añadir Cliente</button></a></th>
     </tr>";
     while ($registro = $statement->fetch()) {
         

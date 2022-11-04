@@ -22,12 +22,14 @@ if (isset($_REQUEST['btnBorrar'])) {
                 $stmt->bindParam(':idDepartamento', $_REQUEST['codDepartamento']);
                 $stmt->execute();
                 
-        }        
+        }else {
+            $msg ="EL departamento no puede ser borrado";
+        }      
 
     } catch (PDOException $e) {
         echo 'ERROR '. $e->getMessage();
     }
     $conn = null ;
 }
-header("Location: departamentos.php");
+header("Location: departamentos.php?msg=$msg");
 ?>

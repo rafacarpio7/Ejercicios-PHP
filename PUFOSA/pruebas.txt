@@ -13,6 +13,11 @@ WHERE trabajos.Funcion LIKE '%PRESIDENT%';
 
 //informe de departamentos
 
+SELECT departamento.Nombre, GrupoRegional,COUNT(empleado_id),MAX(Salario),MIN(Salario),AVG(Salario) FROM empleados
+INNER JOIN departamento ON departamento.departamento_ID=empleados.Departamento_ID
+INNER JOIN ubicacion ON ubicacion.Ubicacion_ID=departamento.Ubicacion_ID
+GROUP BY departamento.Nombre,ubicacion.GrupoRegional;
+
 SELECT departamento.Nombre,ubicacion.GrupoRegional,COUNT(empleados.empleado_id),MAX(empleados.Salario),MIN(empleados.Salario),AVG(empleados.Salario) FROM departamento,empleados,ubicacion
 WHERE departamento.departamento_ID IN 
 (SELECT empleados.Departamento_ID FROM empleados) 
