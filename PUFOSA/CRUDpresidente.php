@@ -13,7 +13,11 @@
         <nav>
             <ul class="navbar">
                 <li><a href="clientes.php"> Clientes </a></li>
-                
+                <li><a href="empleados.php"> Empleados </a></li>
+                <li><a href="trabajos.php"> Trabajos </a></li>
+                <li><a href="departamentos.php"> Departamentos </a></li>
+                <li><a href="ubicacion.php"> Ubicacion </a></li>
+                <li><a href="informeDepartamentos.php"> Informe Departamentos </a></li>
             </ul>
         </nav>
         <a class="tag" target="_blank"  href=""><button>Desconectar</button></a>

@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <header>
-    <a class="logo-inicio" href="index.html" ><img class="logo"  src="imgs/logo.png" alt="logo"></a>
+    <a class="logo-inicio" href="index.html" ><img class="logo"  src="logo.png" alt="logo"></a>
         <nav>
             <ul class="navbar">
                 <li><a href="clientes.php"> Clientes </a></li>

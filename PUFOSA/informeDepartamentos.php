@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-    <a class="logo-inicio" href="index.html" ><img class="logo"  src="logo.png" alt="logo"></a>
+    <a class="logo-inicio" href="index.html" ><img class="logo"  src="logo.PNG" alt="logo"></a>
         <nav>
             <ul class="navbar">
                 <li><a href="clientes.php"> Clientes </a></li>
@@ -17,6 +17,7 @@
                 <li><a href="trabajos.php"> Trabajos </a></li>
                 <li><a href="departamentos.php"> Departamentos </a></li>
                 <li><a href="ubicacion.php"> Ubicacion </a></li>
+                <li><a href="informeDepartamentos.php"> Informe Departamentos </a></li>
             </ul>
         </nav>
         <a class="tag" target="_blank"  href=""><button>Desconectar</button></a>
@@ -39,47 +40,36 @@
     }
     
 
-    $statement = $conexion->prepare("SELECT * FROM cliente ");
+    $statement = $conexion->prepare("SELECT departamento.Nombre AS nomDep,GrupoRegional ,COUNT(empleado_id),MAX(Salario),MIN(Salario),AVG(Salario) FROM empleados
+    INNER JOIN departamento ON departamento.departamento_ID=empleados.Departamento_ID
+    INNER JOIN ubicacion ON ubicacion.Ubicacion_ID=departamento.Ubicacion_ID
+    GROUP BY departamento.Nombre,ubicacion.GrupoRegional;");
 
     $statement->execute();
 
     
 
 
-    echo "<table ><th colspan='11'>Clientes</th>";
+    echo "<table ><th colspan='6'>Informe de Departamentos</th>";
     echo "<tr>
-    <th>ID</th>
-    <th>Nombre</th>
-    <th>Direccion</th>
-    <th>Ciudad</th>
-    <th>Estado</th>
-    <th>Codigo Postal</th>
-    <th>Codigo Area</th>
-    <th>Telefono</th>
-    <th>Vendedor</th>
-    <th>Limite de Credito</th>
-    <th>Comentarios</th>
-    <th><button><a href='añadeClientes.php'>Añadir Cliente</button></a></th>
+    <th>Nombre Departamento</th>
+    <th>Grupo Regional</th>
+    <th>Empleados</th>
+    <th>Salario Maximo</th>
+    <th>Salario Minimo</th>
+    <th>Media de Salario</th>
+    
     </tr>";
     while ($registro = $statement->fetch()) {
         
 
         echo "<tr>
-                <td>".$registro['CLIENTE_ID']."</td>
-                <td>".$registro['nombre']."</td>
-                <td>".$registro['Direccion']."</td>
-                <td>".$registro['Ciudad']."</td>
-                <td>".$registro['Estado']."</td>
-                <td>".$registro['CodigoPostal']."</td>
-                <td>".$registro['CodigoDeArea']."</td>
-                <td>".$registro['Telefono']."</td>
-                <td>".$registro['Vendedor_ID']."</td>
-                <td>".$registro['Limite_De_Credito']."</td>
-                <td>".$registro['Comentarios']."</td>
-
-
-                <td><form action='borraDatosClientes.php'><input type='submit' name='btnBorrar' value='Borrar'></td>
-                <td><input type='hidden' name='idCliente' value='".$registro['CLIENTE_ID']."'></form></td>
+                <td>".$registro['nomDep']."</td>
+                <td>".$registro['GrupoRegional']."</td>
+                <td>".$registro['COUNT(empleado_id)']."</td>
+                <td>".$registro['MAX(Salario)']."</td>
+                <td>".$registro['MIN(Salario)']."</td>
+                <td>".$registro['AVG(Salario)']."</td>
                 
                 
                 
@@ -92,6 +82,7 @@
     echo "</table>";
 
     ?>
+    <p><?= $_GET['msg']??" "?></p>
     
 </body>
 </html>

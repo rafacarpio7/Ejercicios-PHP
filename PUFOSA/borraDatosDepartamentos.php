@@ -1,6 +1,6 @@
 
 <?php
-
+$msg="";
 if (isset($_REQUEST['btnBorrar'])) {
     $servername = "localhost";
     $username = "root";
@@ -23,7 +23,7 @@ if (isset($_REQUEST['btnBorrar'])) {
                 $stmt->execute();
                 
         }else {
-            $msg ="EL departamento no puede ser borrado";
+            $error ="EL departamento no puede ser borrado";
         }      
 
     } catch (PDOException $e) {
@@ -31,5 +31,5 @@ if (isset($_REQUEST['btnBorrar'])) {
     }
     $conn = null ;
 }
-header("Location: departamentos.php?msg=$msg");
+header("Location: departamentos.php?msg=$error");
 ?>

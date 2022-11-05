@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <header>
-    <a class="logo-inicio" href="index.html" ><img class="logo"  src="imgs/logo.png" alt="logo"></a>
+    <a class="logo-inicio" href="index.html" ><img class="logo"  src="logo.png" alt="logo"></a>
         <nav>
             <ul class="navbar">
                 <li><a href="clientes.php"> Clientes </a></li>
@@ -72,7 +72,7 @@
                 $result = $conn->query($sql);
                 $num = $result->fetch();
                 if (!$num['cantidad']>0) {
-                    echo "En el campo ID Trabajo debe introducir un ID de vendedor valido <br>";
+                    echo "En el campo ID Trabajo debe introducir un ID de trabajo valido <br>";
                 } else {
                     $sql= "INSERT INTO empleados (empleado_ID,Apellido,Nombre,Inicial_del_segundo_apellido,Trabajo_id,Jefe_id,Fecha_contrato,Salario,Comision,Departamento_ID) " 
                         . "VALUES (:idEmpl,:ape,:nom,:iniApe,:idTrab,:idJefe,:fecha,:salario,:comision,:idDep)";

@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-    <a class="logo-inicio" href="index.html" ><img class="logo"  src="imgs/logo.png" alt="logo"></a>
+    <a class="logo-inicio" href="index.html" ><img class="logo"  src="logo.png" alt="logo"></a>
         <nav>
             <ul class="navbar">
                 <li><a href="clientes.php"> Clientes </a></li>
@@ -62,7 +62,7 @@
 
 
                 <td><form action='borraDatosTrabajos.php'><input type='submit' name='btnBorrar' value='Borrar'></td>
-                <td><input type='hidden' name='codTrabajo' value='".$registro['Trabajo_ID']."'></form></td>
+                <input type='hidden' name='codTrabajo' value='".$registro['Trabajo_ID']."'></form>
                 
                 
                 

@@ -35,6 +35,8 @@ header {
     cursor: pointer;
     height: 75px;
     margin-right: auto;
+    border: 0.5;
+    border-radius: 30px;
 }
 
 .navbar {
@@ -86,6 +88,7 @@ body {
 }
 
 table {
+    margin: auto;
     width: 800px;
     border-collapse: collapse;
     overflow: hidden;
@@ -106,5 +109,30 @@ th {
         background-color: #55608f;
     }
 
+form {
+    width: 400px;
+    background: #49a09d;
+    padding: auto;
+    margin: auto;
+    margin-top: 75px;
+    border-radius: 4px;
+
+
+}
+
+input {
+    width: 150px;
+    padding: 7px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    border: 1px solid #49a09d;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+legend {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
 
    

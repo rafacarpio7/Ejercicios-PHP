@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <header>
-    <a class="logo-inicio" href="index.html" ><img class="logo"  src="imgs/logo.png" alt="logo"></a>
+    <a class="logo-inicio" href="index.html" ><img class="logo"  src="logo.png" alt="logo"></a>
         <nav>
             <ul class="navbar">
                 <li><a href="clientes.php"> Clientes </a></li>
@@ -25,27 +25,27 @@
         <fieldset>
             <legend>Nuevo Cliente</legend>
             ID Cliente :
-            <input type="number" name="idCliente" required>
+            <input type="number" name="idCliente" required><br>
             Nombre :
-            <input type="text" name="nombre" required>
+            <input type="text" name="nombre" required><br>
             Direccion : 
-            <input type="text" name="direccion" required>
+            <input type="text" name="direccion" required><br>
             Ciudad : 
-            <input type="text" name="ciudad" required>
+            <input type="text" name="ciudad" required><br>
             Estado : 
-            <input type="text" name="estado" required>
+            <input type="text" name="estado" required><br>
             Codigo Postal :
-            <input type="text" name="codigoPostal" required>
+            <input type="text" name="codigoPostal" required><br>
             Codigo Area :
-            <input type="text" name="codigoArea" required>
+            <input type="text" name="codigoArea" required><br>
             Telefono : 
-            <input type="text" name="telefono" required>
+            <input type="text" name="telefono" required><br>
             Vendedor : 
-            <input type="text" name="vendedorID" required>
+            <input type="text" name="vendedorID" required><br>
             Limite de Credito :
-            <input type="text" name="limiteCredito" required>
+            <input type="text" name="limiteCredito" required><br>
             Comentarios : 
-            <input type="text" name="comentarios" required>
+            <input type="text" name="comentarios" required><br>
             <input type="submit" name="btnAñadir" value="Añadir">
         </fieldset>
     </form>
@@ -73,6 +73,10 @@
 
             if ($num['cantidad']>0) {
                 echo "No se puede dar de alta el cliente ya existe en la base de datos <br>";
+                $log = fopen("log.txt","a+b");
+                $DateAndTime = date('m-d-Y h:i:s a', time());
+                fwrite($log,"....Funcion INSERT.....usuario: ".$_REQUEST['idCliente'].".....$DateAndTime\n");
+                fclose($log);
             }else {
                 $sql = "SELECT COUNT(empleado_ID) AS 'cantidad' FROM empleados WHERE empleado_ID='".$_REQUEST['vendedorID']."';";
                 $result = $conn->query($sql);
