@@ -8,19 +8,54 @@
     <title>PUFOSA</title>
 </head>
 <body>
-    <header>
-    <a class="logo-inicio" href="index.html" ><img class="logo"  src="logo.png" alt="logo"></a>
-        <nav>
-            <ul class="navbar">
-                <li><a href="clientes.php"> Clientes </a></li>
-                <li><a href="empleados.php"> Empleados </a></li>
-                <li><a href="trabajos.php"> Trabajos </a></li>
-                <li><a href="departamentos.php"> Departamentos </a></li>
-                <li><a href="ubicacion.php"> Ubicacion </a></li>
-            </ul>
-        </nav>
-        <a class="tag" target="_blank"  href=""><button>Desconectar</button></a>
-    </header>
+<?php
+    session_start();
+
+    if (!empty($_SESSION['presidente'])) {
+        echo '<header>
+        <a class="logo-inicio" href="CRUD.php" ><img class="logo"  src="logo.png" alt="logo"></a>
+            <nav>
+                <ul class="navbar">
+                    <li><a href="clientes.php"> Clientes </a></li>
+                    <li><a href="empleados.php"> Empleados </a></li>
+                    <li><a href="trabajos.php"> Trabajos </a></li>
+                    <li><a href="departamentos.php"> Departamentos </a></li>
+                    <li><a href="ubicacion.php"> Ubicacion </a></li>
+                    <li><a href="informeDepartamentos.php"> Informe Departamentos </a></li>
+                </ul>
+            </nav>
+            <a class="tag" href="logout.php"><button>Desconectar</button></a>
+        </header>';
+    } else if(!empty($_SESSION['admin'])){
+        echo '<header>
+        <a class="logo-inicio" href="CRUD.php" ><img class="logo"  src="logo.png" alt="logo"></a>
+            <nav>
+                <ul class="navbar">
+                    <li><a href="clientes.php"> Clientes </a></li>
+                    <li><a href="empleados.php"> Empleados </a></li>
+                    <li><a href="trabajos.php"> Trabajos </a></li>
+                    <li><a href="departamentos.php"> Departamentos </a></li>
+                    <li><a href="ubicacion.php"> Ubicacion </a></li>
+                    
+                </ul>
+            </nav>
+            <a class="tag"   href="logout.php"><button>Desconectar</button></a>
+        </header>';
+    }else {
+        echo '<header>
+        <a class="logo-inicio" href="CRUD.php" ><img class="logo"  src="logo.png" alt="logo"></a>
+            <nav>
+                <ul class="navbar">
+                    <li><a href="clientes.php"> Clientes </a></li>
+                </ul>
+            </nav>
+            <a class="tag"   href="logout.php"><button>Desconectar</button></a>
+        </header>';
+    }
+
+
+    
+    ?>
     
 
     <?php
@@ -80,13 +115,22 @@
 
                 <td><form action='borraDatosClientes.php'><input type='submit' name='btnBorrar' value='Borrar'></td>
                 <td><input type='hidden' name='idCliente' value='".$registro['CLIENTE_ID']."'></form></td>
-                
-                
-                
-                
+                <form action='modificaCliente.php' >
+                <input type='hidden' name='idCliente' value='".$registro['CLIENTE_ID']."'>
+                <input type='hidden' name='nombreCli' value='".$registro['nombre']."'>
+                <input type='hidden' name='direccionCli' value='".$registro['Direccion']."'>
+                <input type='hidden' name='ciudadCli' value='".$registro['Ciudad']."'>
+                <input type='hidden' name='estadoCli' value='".$registro['Estado']."'>
+                <input type='hidden' name='codPostalCli' value='".$registro['CodigoPostal']."'>
+                <input type='hidden' name='codAreaCli' value='".$registro['CodigoDeArea']."'>
+                <input type='hidden' name='telefonoCli' value='".$registro['Telefono']."'>
+                <input type='hidden' name='vendedorIdCli' value='".$registro['Vendedor_ID']."'>
+                <input type='hidden' name='limCredCli' value='".$registro['Limite_De_Credito']."'>
+                <input type='hidden' name='comentarioCli' value='".$registro['Comentarios']."'>
+                <td><input type='submit' name='btnModificar' value='Editar'></td>
+                </form>
 
             </tr>";
-
     } 
 
     echo "</table>";

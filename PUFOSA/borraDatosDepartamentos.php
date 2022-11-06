@@ -1,5 +1,6 @@
 
 <?php
+session_start();
 $msg="";
 if (isset($_REQUEST['btnBorrar'])) {
     $servername = "localhost";
@@ -21,7 +22,10 @@ if (isset($_REQUEST['btnBorrar'])) {
                 $stmt = $conn->prepare($sql);
                 $stmt->bindParam(':idDepartamento', $_REQUEST['codDepartamento']);
                 $stmt->execute();
-                
+                $log = fopen("log.txt","a+b");
+                $DateAndTime = date('d-m-Y h:i:s a', time());
+                fwrite($log,"....Funcion DELETE DEPARTAMENTO Erronea id cliente ya existente.....usuario: ".$_SESSION['sesion'].".....$DateAndTime\n");
+                fclose($log);
         }else {
             $error ="EL departamento no puede ser borrado";
         }      

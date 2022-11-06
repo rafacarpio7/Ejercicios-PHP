@@ -8,7 +8,8 @@
     <title>PUFOSA</title>
 </head>
 <body>
-<?php
+
+    <?php
     session_start();
 
     if (!empty($_SESSION['presidente'])) {
@@ -39,7 +40,7 @@
                     
                 </ul>
             </nav>
-            <a class="tag"   href="logout.php"><button>Desconectar</button></a>
+            <a class="tag"  href="logout.php"><button>Desconectar</button></a>
         </header>';
     }else {
         echo '<header>
@@ -49,69 +50,17 @@
                     <li><a href="clientes.php"> Clientes </a></li>
                 </ul>
             </nav>
-            <a class="tag"   href="logout.php"><button>Desconectar</button></a>
+            <a class="tag"  href="logout.php"><button>Desconectar</button></a>
         </header>';
     }
 
 
     
     ?>
+
+  
     
-
-    <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-
-    try {
-        $conexion = new PDO("mysql:host=$servername;dbname=pufosa;charset=utf8",$username,$password);
-
-        $conexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-
-       
-    } catch (PDOException $e) {
-        echo 'Conexion fallida'. $e->getMessage();
-    }
     
-
-    $statement = $conexion->prepare("SELECT * FROM departamento ");
-
-    $statement->execute();
-
-    
-
-
-    echo "<table ><th colspan='3'>Departamentos</th>";
-    echo "<tr>
-    <th>ID Departamento</th>
-    <th>Nombre</th>
-    <th>ID Ubicacion</th>
-    
-    </tr>";
-    while ($registro = $statement->fetch()) {
-        
-
-        echo "<tr>
-                <td>".$registro['departamento_ID']."</td>
-                <td>".$registro['Nombre']."</td>
-                <td>".$registro['Ubicacion_ID']."</td>
-                
-
-
-                <td><form action='borraDatosDepartamentos.php'><input type='submit' name='btnBorrar' value='Borrar'></td>
-                <td><input type='hidden' name='codDepartamento' value='".$registro['departamento_ID']."'></form></td>
-                
-                
-                
-
-            </tr>";
-
-    } 
-
-    echo "</table>";
-
-    ?>
-    <p><?= $_GET['msg']??" "?></p>
     
 </body>
 </html>

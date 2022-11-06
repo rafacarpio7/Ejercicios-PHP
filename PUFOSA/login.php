@@ -26,6 +26,11 @@
 
     <?php
     if (isset($_REQUEST['btnLogin'])) {
+        session_destroy();
+        session_start();
+    
+    $_SESSION['sesion']=$_REQUEST['idLogin'];
+    
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -62,12 +67,15 @@
                 $statement->execute();
                 $presidente = $statement->fetchAll(PDO::FETCH_ASSOC);
                 if (count($presidente)>0) {
-                    header("Location: CRUDpresidente.php");
+                    $_SESSION['presidente']='si';
+                    header("Location: CRUD.php");
                 } else {
-                    header("Location: CRUDadmin.php");
+                    $_SESSION['admin']='si';
+                    header("Location: CRUD.php");
                 }
             }else {
-                header("Location: CRUDempleados.php");
+                $_SESSION['empleado']='si';
+                header("Location: CRUD.php");
             }
 
         } else {

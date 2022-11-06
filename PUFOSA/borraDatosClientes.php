@@ -1,6 +1,6 @@
 
 <?php
-
+session_start();
 if (isset($_REQUEST['btnBorrar'])) {
     $servername = "localhost";
     $username = "root";
@@ -21,6 +21,10 @@ if (isset($_REQUEST['btnBorrar'])) {
                 $stmt = $conn->prepare($sql);
                 $stmt->bindParam(':idCliente', $_REQUEST['idCliente']);
                 $stmt->execute();
+                $log = fopen("log.txt","a+b");
+                $DateAndTime = date('d-m-Y h:i:s a', time());
+                fwrite($log,"....Funcion DELETE CLIENTE .....usuario: ".$_SESSION['sesion'].".....$DateAndTime\n");
+                fclose($log);
                 
         }        
 
