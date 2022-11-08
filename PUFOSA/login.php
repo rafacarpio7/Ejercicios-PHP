@@ -26,7 +26,7 @@
 
     <?php
     if (isset($_REQUEST['btnLogin'])) {
-        session_destroy();
+       
         session_start();
     
     $_SESSION['sesion']=$_REQUEST['idLogin'];

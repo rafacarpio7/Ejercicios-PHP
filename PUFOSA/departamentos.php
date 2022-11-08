@@ -92,6 +92,7 @@
         
 
         echo "<tr>
+                
                 <td>".$registro['departamento_ID']."</td>
                 <td>".$registro['Nombre']."</td>
                 <td>".$registro['Ubicacion_ID']."</td>
@@ -109,9 +110,10 @@
     } 
 
     echo "</table>";
-
+    echo "<p>".$_GET['msg']??''."</p>";
     ?>
-    <p><?= $_GET['msg']??" "?></p>
+    
+   
     
 </body>
 </html>

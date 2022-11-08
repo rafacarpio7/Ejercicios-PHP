@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-$msg="";
+$error="";
 if (isset($_REQUEST['btnBorrar'])) {
     $servername = "localhost";
     $username = "root";
@@ -26,12 +26,11 @@ if (isset($_REQUEST['btnBorrar'])) {
                 $DateAndTime = date('d-m-Y h:i:s a', time());
                 fwrite($log,"....Funcion DELETE DEPARTAMENTO Erronea id cliente ya existente.....usuario: ".$_SESSION['sesion'].".....$DateAndTime\n");
                 fclose($log);
-        }else {
-            $error ="EL departamento no puede ser borrado";
-        }      
+        }    
 
     } catch (PDOException $e) {
         echo 'ERROR '. $e->getMessage();
+        $error ="EL departamento no puede ser borrado";
     }
     $conn = null ;
 }

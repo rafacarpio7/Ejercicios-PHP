@@ -13,3 +13,10 @@
 ....Funcion INSERT Erronea id cliente ya existente.....usuario: 7654.....06-11-2022 05:54:37 pm
 ....Funcion DELETE CLIENTE .....usuario: 7654.....06-11-2022 05:54:50 pm
 ....Funcion DELETE EMPLEADOS.....usuario: 7839.....06-11-2022 05:55:26 pm
+....Funcion DELETE CLIENTE .....usuario: 7506.....07-11-2022 08:58:19 am
+....Funcion INSERT Erronea id cliente ya existente.....usuario: 7839.....07-11-2022 09:04:42 am
+....Funcion INSERT Erronea id vendedor no valido.....usuario: 7839.....07-11-2022 09:05:20 am
+....Funcion INSERT correcto .....usuario: 7839.....07-11-2022 09:05:52 am
+....Funcion DELETE CLIENTE .....usuario: 7839.....07-11-2022 09:06:06 am
+....Funcion DELETE CLIENTE .....usuario: 7839.....07-11-2022 12:55:00 pm
+....Funcion DELETE CLIENTE .....usuario: 7506.....08-11-2022 01:52:38 pm
