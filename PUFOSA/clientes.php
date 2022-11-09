@@ -113,8 +113,10 @@
                 <td>".$registro['Comentarios']."</td>
 
 
-                <td><form action='borraDatosClientes.php'><input type='submit' name='btnBorrar' value='Borrar'></td>
-                <td><input type='hidden' name='idCliente' value='".$registro['CLIENTE_ID']."'></form></td>
+                <form action='borraDatosClientes.php'>
+                <td><input type='submit' name='btnBorrar' value='Borrar'></td>
+                <input type='hidden' name='idCliente' value='".$registro['CLIENTE_ID']."'>
+                </form>
                 <form action='modificaCliente.php' >
                 <input type='hidden' name='idCliente' value='".$registro['CLIENTE_ID']."'>
                 <input type='hidden' name='nombreCli' value='".$registro['nombre']."'>
@@ -127,7 +129,7 @@
                 <input type='hidden' name='vendedorIdCli' value='".$registro['Vendedor_ID']."'>
                 <input type='hidden' name='limCredCli' value='".$registro['Limite_De_Credito']."'>
                 <input type='hidden' name='comentarioCli' value='".$registro['Comentarios']."'>
-                <td><input type='submit' name='btnModificar' value='Editar'></td>
+                <td><input type='submit' name='btnEditar' value='Editar'></td>
                 </form>
 
             </tr>";

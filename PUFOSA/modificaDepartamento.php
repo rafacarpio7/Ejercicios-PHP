@@ -58,87 +58,63 @@
 <body>
     <form action="" method="post">
         <fieldset>
-            <legend>Nuevo Empleados</legend>
-            ID Empleado :
-            <input type="number" name="idEmpleado" required>
-            Apellido :
-            <input type="text" name="apellido" required>
-            Nombre : 
-            <input type="text" name="nombre" required>
-            Inicial Segundo Apellido : 
-            <input type="text" name="iniApellido" required>
-            ID Trabajo : 
-            <input type="text" name="idTrabajo" required>
-            ID Jefe :
-            <input type="text" name="idJefe" required>
-            Fecha de Contrato :
-            <input type="date" name="fechaContrato" required>
-            Salario : 
-            <input type="text" name="salario" required>
-            Comision : 
-            <input type="text" name="comision" required>
+            <legend>Modifica Departamento</legend>
             ID Departamento :
-            <input type="text" name="idDepartamento" required>
-            <input type="submit" name="btnAñadir" value="Añadir">
+            <input type="text" name="idDepartamento" value="<?=$_REQUEST['departamentoId']?>" disabled><br>
+            Nombre :
+            <input type="text" name="nombre" value="<?=$_REQUEST['nombreDep']?>" required><br>
+            ID Ubicacion : 
+            <input type="text" name="idUbicacion" value="<?=$_REQUEST['ubicacionId']?>" required><br>
+            <input type="submit" name="btnModificar" value="Modificar">
         </fieldset>
     </form>
 
-<?php
-    $tblDatos = null;
+    <?php
     $servername = "localhost";
     $username = "root";
     $password = "";
     $sql="";
-
-    if (isset($_REQUEST['btnAñadir'])) {
+    $idDepartamentoGuardado = $_REQUEST['departamentoId'];
+    if (isset($_REQUEST['btnModificar'])) {
         try {
             $conn = new PDO("mysql:host=$servername;dbname=pufosa;charset=utf8",$username,$password);
 
 
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "SELECT COUNT(*) AS 'cantidad' FROM empleados WHERE empleado_ID='".$_REQUEST['idEmpleado']."';";
-            $result = $conn->query($sql);
-            $num = $result->fetch();
-
-            if ($num['cantidad']>0) {
-                echo "No se puede dar de alta, el empleado ya existe en la base de datos <br>";
-            }else {
-                $sql = "SELECT COUNT(trabajo_ID) AS 'cantidad' FROM trabajo WHERE trabajo_ID='".$_REQUEST['idTrabajo']."';";
+            
+                $sql = "SELECT COUNT(Ubicacion_ID) AS 'cantidad' FROM ubicacion WHERE Ubicacion_ID='".$_REQUEST['ubicacionId']."';";
                 $result = $conn->query($sql);
                 $num = $result->fetch();
                 if (!$num['cantidad']>0) {
-                    echo "En el campo ID Trabajo debe introducir un ID de trabajo valido <br>";
-                } else {
-                    $sql= "INSERT INTO empleados (empleado_ID,Apellido,Nombre,Inicial_del_segundo_apellido,Trabajo_id,Jefe_id,Fecha_contrato,Salario,Comision,Departamento_ID) " 
-                        . "VALUES (:idEmpl,:ape,:nom,:iniApe,:idTrab,:idJefe,:fecha,:salario,:comision,:idDep)";
-
-
-                $stmt = $conn->prepare($sql);
-                $stmt->bindParam(':idEmpl', $_REQUEST['idEmpleado']);
-                $stmt->bindParam(':ape', $_REQUEST['apellido']);
-                $stmt->bindParam(':nom', $_REQUEST['nombre']);
-                $stmt->bindParam(':iniApe', $_REQUEST['iniApellido']);
-                $stmt->bindParam(':idTrab', $_REQUEST['idTrabajo']);
-                $stmt->bindParam(':idJefe', $_REQUEST['idJefe']);
-                $stmt->bindParam(':fecha', $_REQUEST['fechaContrato']);
-                $stmt->bindParam(':salario', $_REQUEST['salario']);
-                $stmt->bindParam(':comision', $_REQUEST['comision']);
-                $stmt->bindParam(':idDep', $_REQUEST['idDepartamento']);
-                $stmt->execute();
-                echo "Insertado correctamente";
+                    echo "En el campo Ubicacion ID debe introducir un valor de ubicacion id valido <br>";
+                    $log = fopen("log.txt","a+b");
+                    $DateAndTime = date('d-m-Y h:i:s a', time());
+                    fwrite($log,"....Funcion UPDATE Erronea id ubicacion no valido.....usuario: ".$_SESSION['sesion'].".....$DateAndTime\n");
+                    fclose($log);
+                }else{
+                    $conn = new PDO("mysql:host=$servername;dbname=pufosa;charset=utf8",$username,$password);
+                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+                    $sql = "UPDATE departamento SET departamento_ID=:depID,Nombre=:nom,Ubicacion_ID=:ubicID WHERE departamento_ID=:departamentoIDGuardada;";
+        
+                    $stmt = $conn->prepare($sql);
+                        $stmt->bindParam(':depID', $idDepartamentoGuardado);
+                        $stmt->bindParam(':nom', $_REQUEST['nombre']);
+                        $stmt->bindParam(':ubicID', $_REQUEST['idUbicacion']);
+                        $stmt->bindParam(':departamentoIDGuardada', $idDepartamentoGuardado);
+                        
+                        if ($stmt->execute()) {
+                            header("Location: departamentos.php");
+                        }
                 }
-                
-                
-            }
-
-                
-            
-        } catch (PDOException $e) {
+              
+        }catch (PDOException $e) {
             echo 'Conexion fallida'. $e->getMessage();
         }
-        $conn=null;
     }
-?>
+        $conn=null;
+    
+    ?>
+
 </body>
 </html>
-

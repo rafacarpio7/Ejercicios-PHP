@@ -85,7 +85,7 @@
     echo "<tr>
     <th>ID Trabajo</th>
     <th>Funcion</th>
-    
+    <th><button><a href='añadeTrabajos.php'>Añadir Trabajos</button></a></th>
     </tr>";
     while ($registro = $statement->fetch()) {
         
@@ -96,9 +96,15 @@
                 
 
 
-                <td><form action='borraDatosTrabajos.php'><input type='submit' name='btnBorrar' value='Borrar'></td>
-                <input type='hidden' name='codTrabajo' value='".$registro['Trabajo_ID']."'></form>
-                
+                <form action='borraDatosTrabajos.php'>
+                <td><input type='submit' name='btnBorrar' value='Borrar'></td>
+                <input type='hidden' name='codTrabajo' value='".$registro['Trabajo_ID']."'>
+                </form>
+                <form action='modificaTrabajo.php' >
+                <input type='hidden' name='trabajoId' value='".$registro['Trabajo_ID']."'>
+                <input type='hidden' name='funcion' value='".$registro['Funcion']."'>
+                <td><input type='submit' name='btnEditar' value='Editar'></td>
+                </form>
                 
                 
 

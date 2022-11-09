@@ -86,7 +86,7 @@
     </form>
 
 <?php
-    $tblDatos = null;
+   
     $servername = "localhost";
     $username = "root";
     $password = "";

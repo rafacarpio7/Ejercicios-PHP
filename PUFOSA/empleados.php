@@ -93,6 +93,7 @@
     <th>Salario</th>
     <th>Comision</th>
     <th>ID Departamento</th>
+    <th><button><a href='añadeEmpleados.php'>Añadir Empleados</button></a></th>
     </tr>";
     while ($registro = $statement->fetch()) {
         
@@ -111,8 +112,23 @@
                 
 
 
-                <td><form action='borraDatosEmpleados.php'><input type='submit' name='btnBorrar' value='Borrar'></td>
-                <td><input type='hidden' name='codEmpleado' value='".$registro['empleado_ID']."'></form></td>
+                <form action='borraDatosEmpleados.php'>
+                <td><input type='submit' name='btnBorrar' value='Borrar'></td>
+                <input type='hidden' name='codEmpleado' value='".$registro['empleado_ID']."'>
+                </form>
+                <form action='modificaEmpleado.php' >
+                <input type='hidden' name='empleadoId' value='".$registro['empleado_ID']."'>
+                <input type='hidden' name='apellido' value='".$registro['Apellido']."'>
+                <input type='hidden' name='nombreEmp' value='".$registro['Nombre']."'>
+                <input type='hidden' name='iniApellido' value='".$registro['Inicial_del_segundo_apellido']."'>
+                <input type='hidden' name='trabajoId' value='".$registro['Trabajo_ID']."'>
+                <input type='hidden' name='jefeId' value='".$registro['Jefe_ID']."'>
+                <input type='hidden' name='fechaContrato' value='".$registro['Fecha_contrato']."'>
+                <input type='hidden' name='salarioEmp' value='".$registro['Salario']."'>
+                <input type='hidden' name='comision' value='".$registro['Comision']."'>
+                <input type='hidden' name='departamentoId' value='".$registro['Departamento_ID']."'>
+                <td><input type='submit' name='btnEditar' value='Editar'></td>
+                </form>
                 
                 
                 
