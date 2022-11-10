@@ -93,9 +93,6 @@
         echo "<tr>
                 <td>".$registro['Trabajo_ID']."</td>
                 <td>".$registro['Funcion']."</td>
-                
-
-
                 <form action='borraDatosTrabajos.php'>
                 <td><input type='submit' name='btnBorrar' value='Borrar'></td>
                 <input type='hidden' name='codTrabajo' value='".$registro['Trabajo_ID']."'>
@@ -105,9 +102,6 @@
                 <input type='hidden' name='funcion' value='".$registro['Funcion']."'>
                 <td><input type='submit' name='btnEditar' value='Editar'></td>
                 </form>
-                
-                
-
             </tr>";
 
     } 

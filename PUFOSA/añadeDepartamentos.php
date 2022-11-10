@@ -60,11 +60,11 @@
         <fieldset>
             <legend>Nuevo Departamento</legend>
             ID Departamento:
-            <input type="number" name="idDepartamento" required>
+            <input type="number" name="idDepartamento" required><br>
             Nombre :
-            <input type="text" name="nombre" required>
+            <input type="text" name="nombre" required><br>
             ID Ubicacion : 
-            <input type="text" name="ubicacion" >
+            <input type="text" name="ubicacion" ><br>
             <input type="submit" name="btnAñadir" value="Añadir">
         </fieldset>
     </form>

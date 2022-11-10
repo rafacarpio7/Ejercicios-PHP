@@ -116,9 +116,9 @@
     } 
 
     echo "</table>";
-    echo "<p>".$_GET['msg']??''."</p>";
-    ?>
     
+    ?>
+    <?= $_GET['msg']??" "?>
    
     
 </body>

@@ -58,11 +58,11 @@
 <body>
     <form action="" method="post">
         <fieldset>
-            <legend>Nuevo Departamento</legend>
+            <legend>Nueva Ubicacion</legend>
             ID Ubicacion:
-            <input type="number" name="idUbicacion" required>
+            <input type="number" name="idUbicacion" required><br>
             Region :
-            <input type="text" name="region" required>
+            <input type="text" name="region" required><br>
             <input type="submit" name="btnAñadir" value="Añadir">
         </fieldset>
     </form>

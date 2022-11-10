@@ -60,7 +60,7 @@
         <fieldset>
             <legend>Modifica Departamento</legend>
             ID Departamento :
-            <input type="text" name="idDepartamento" value="<?=$_REQUEST['departamentoId']?>" disabled><br>
+            <input type="text" name="idDepartamento" value="<?=$_REQUEST['departamentoId']?>"disabled><br>
             Nombre :
             <input type="text" name="nombre" value="<?=$_REQUEST['nombreDep']?>" required><br>
             ID Ubicacion : 

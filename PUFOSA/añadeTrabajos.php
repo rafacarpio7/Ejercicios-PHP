@@ -58,11 +58,11 @@
 <body>
     <form action="" method="post">
         <fieldset>
-            <legend>Nuevo Departamento</legend>
+            <legend>Nuevo Trabajo</legend>
             ID Trabajo:
-            <input type="number" name="idTrabajo" required>
+            <input type="number" name="idTrabajo" required><br>
             Funcion :
-            <input type="text" name="funcion" required>
+            <input type="text" name="funcion" required><br>
             <input type="submit" name="btnAñadir" value="Añadir">
         </fieldset>
     </form>
