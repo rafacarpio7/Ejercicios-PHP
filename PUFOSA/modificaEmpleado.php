@@ -133,8 +133,9 @@
                     $stmt->bindParam(':comi', $_REQUEST['comision']);
                     $stmt->bindParam(':depID', $_REQUEST['departamentoId']);
                     $stmt->bindParam(':empleadoIDGuardada', $idEmpleadoGuardado);
-                    $stmt->execute();
-                    echo "Modificador correctamente";
+                    if ($stmt->execute()) {
+                        header("Location: empleados.php");
+                    }
                 }
                 }   
             }
