@@ -68,14 +68,14 @@
                 $presidente = $statement->fetchAll(PDO::FETCH_ASSOC);
                 if (count($presidente)>0) {
                     $_SESSION['presidente']='si';
-                    header("Location: CRUD.php");
+                    header("Location: index.php");
                 } else {
                     $_SESSION['admin']='si';
-                    header("Location: CRUD.php");
+                    header("Location: index.php");
                 }
             }else {
                 $_SESSION['empleado']='si';
-                header("Location: CRUD.php");
+                header("Location: index.php");
             }
 
         } else {

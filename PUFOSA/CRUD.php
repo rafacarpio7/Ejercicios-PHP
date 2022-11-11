@@ -9,12 +9,12 @@
 </head>
 <body>
 
-    <?php
+<?php
     session_start();
 
     if (!empty($_SESSION['presidente'])) {
         echo '<header>
-        <a class="logo-inicio" href="CRUD.php" ><img class="logo"  src="logo.png" alt="logo"></a>
+        <a class="logo-inicio" href="index.php" ><img class="logo"  src="logo.png" alt="logo"></a>
             <nav>
                 <ul class="navbar">
                     <li><a href="clientes.php"> Clientes </a></li>
@@ -23,13 +23,14 @@
                     <li><a href="departamentos.php"> Departamentos </a></li>
                     <li><a href="ubicacion.php"> Ubicacion </a></li>
                     <li><a href="informeDepartamentos.php"> Informe Departamentos </a></li>
+                    <li><a href="log.php"> Fichero LOG </a></li>
                 </ul>
             </nav>
             <a class="tag" href="logout.php"><button>Desconectar</button></a>
         </header>';
     } else if(!empty($_SESSION['admin'])){
         echo '<header>
-        <a class="logo-inicio" href="CRUD.php" ><img class="logo"  src="logo.png" alt="logo"></a>
+        <a class="logo-inicio" href="index.php" ><img class="logo"  src="logo.png" alt="logo"></a>
             <nav>
                 <ul class="navbar">
                     <li><a href="clientes.php"> Clientes </a></li>
@@ -37,20 +38,21 @@
                     <li><a href="trabajos.php"> Trabajos </a></li>
                     <li><a href="departamentos.php"> Departamentos </a></li>
                     <li><a href="ubicacion.php"> Ubicacion </a></li>
+                    <li><a href="log.php"> Fichero LOG </a></li>
                     
                 </ul>
             </nav>
-            <a class="tag"  href="logout.php"><button>Desconectar</button></a>
+            <a class="tag"   href="logout.php"><button>Desconectar</button></a>
         </header>';
     }else {
         echo '<header>
-        <a class="logo-inicio" href="CRUD.php" ><img class="logo"  src="logo.png" alt="logo"></a>
+        <a class="logo-inicio" href="index.php" ><img class="logo"  src="logo.png" alt="logo"></a>
             <nav>
                 <ul class="navbar">
                     <li><a href="clientes.php"> Clientes </a></li>
                 </ul>
             </nav>
-            <a class="tag"  href="logout.php"><button>Desconectar</button></a>
+            <a class="tag"   href="logout.php"><button>Desconectar</button></a>
         </header>';
     }
 

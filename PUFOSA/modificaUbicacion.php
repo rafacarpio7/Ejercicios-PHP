@@ -8,52 +8,7 @@
     <title>Document</title>
 </head>
 <?php
-    session_start();
-
-    if (!empty($_SESSION['presidente'])) {
-        echo '<header>
-        <a class="logo-inicio" href="index.html" ><img class="logo"  src="logo.png" alt="logo"></a>
-            <nav>
-                <ul class="navbar">
-                    <li><a href="clientes.php"> Clientes </a></li>
-                    <li><a href="empleados.php"> Empleados </a></li>
-                    <li><a href="trabajos.php"> Trabajos </a></li>
-                    <li><a href="departamentos.php"> Departamentos </a></li>
-                    <li><a href="ubicacion.php"> Ubicacion </a></li>
-                    <li><a href="informeDepartamentos.php"> Informe Departamentos </a></li>
-                </ul>
-            </nav>
-            <a class="tag" href="logout.php"><button>Desconectar</button></a>
-        </header>';
-    } else if(!empty($_SESSION['admin'])){
-        echo '<header>
-        <a class="logo-inicio" href="index.html" ><img class="logo"  src="logo.png" alt="logo"></a>
-            <nav>
-                <ul class="navbar">
-                    <li><a href="clientes.php"> Clientes </a></li>
-                    <li><a href="empleados.php"> Empleados </a></li>
-                    <li><a href="trabajos.php"> Trabajos </a></li>
-                    <li><a href="departamentos.php"> Departamentos </a></li>
-                    <li><a href="ubicacion.php"> Ubicacion </a></li>
-                    
-                </ul>
-            </nav>
-            <a class="tag"   href="logout.php"><button>Desconectar</button></a>
-        </header>';
-    }else {
-        echo '<header>
-        <a class="logo-inicio" href="index.html" ><img class="logo"  src="logo.png" alt="logo"></a>
-            <nav>
-                <ul class="navbar">
-                    <li><a href="clientes.php"> Clientes </a></li>
-                </ul>
-            </nav>
-            <a class="tag"   href="logout.php"><button>Desconectar</button></a>
-        </header>';
-    }
-
-
-    
+include_once "CRUD.php";
     ?>
 <body>
     <form action="" method="post">
@@ -83,7 +38,10 @@
                 $stmt->bindParam(':ubiID', $idUbicacionGuardado);
                 $stmt->bindParam(':grupRegi', $_REQUEST['nombre']);
                 $stmt->bindParam(':UbicacionIDGuardada', $idUbicacionGuardado);
-                
+                $log = fopen("log.csv","a+b");
+                $DateAndTime = date('d-m-Y h:i:s a', time());
+                fwrite($log,"UPDATE;".$_SESSION['sesion'].";$DateAndTime\n");
+                fclose($log);
                 if ($stmt->execute()) {
                     header("Location: Ubicacion.php");
                 }
