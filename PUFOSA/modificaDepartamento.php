@@ -87,9 +87,9 @@
                 $num = $result->fetch();
                 if (!$num['cantidad']>0) {
                     echo "En el campo Ubicacion ID debe introducir un valor de ubicacion id valido <br>";
-                    $log = fopen("log.txt","a+b");
+                    $log = fopen("log.csv","a+b");
                     $DateAndTime = date('d-m-Y h:i:s a', time());
-                    fwrite($log,"....Funcion UPDATE Erronea id ubicacion no valido.....usuario: ".$_SESSION['sesion'].".....$DateAndTime\n");
+                    fwrite($log,"UPDATE;".$_SESSION['sesion'].";$DateAndTime\n");
                     fclose($log);
                 }else{
                     $conn = new PDO("mysql:host=$servername;dbname=pufosa;charset=utf8",$username,$password);
@@ -102,7 +102,10 @@
                         $stmt->bindParam(':nom', $_REQUEST['nombre']);
                         $stmt->bindParam(':ubicID', $_REQUEST['idUbicacion']);
                         $stmt->bindParam(':departamentoIDGuardada', $idDepartamentoGuardado);
-                        
+                        $log = fopen("log.csv","a+b");
+                        $DateAndTime = date('d-m-Y h:i:s a', time());
+                        fwrite($log,"UPDATE;".$_SESSION['sesion'].";$DateAndTime\n");
+                        fclose($log);
                         if ($stmt->execute()) {
                             header("Location: departamentos.php");
                         }

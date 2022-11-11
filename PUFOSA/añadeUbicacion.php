@@ -87,6 +87,10 @@
 
             if ($num['cantidad']>0) {
                 echo "No se puede dar de alta la Ubicacion, ya existe en la base de datos <br>";
+                $log = fopen("log.csv","a+b");
+                $DateAndTime = date('d-m-Y h:i:s a', time());
+                fwrite($log,"INSERT;".$_SESSION['sesion'].";$DateAndTime\n");
+                fclose($log);
             }else {
                     $sql= "INSERT INTO ubicacion (Ubicacion_ID,GrupoRegional) " 
                         . "VALUES (:idUbi,:gruReg)";
@@ -96,6 +100,10 @@
                 $stmt->bindParam(':idUbi', $_REQUEST['idUbicacion']);
                 $stmt->bindParam(':gruReg', $_REQUEST['region']);
                 $stmt->execute();
+                $log = fopen("log.csv","a+b");
+                $DateAndTime = date('d-m-Y h:i:s a', time());
+                fwrite($log,"INSERT;".$_SESSION['sesion'].";$DateAndTime\n");
+                fclose($log);
                 echo "Insertado correctamente";
             }   
         } catch (PDOException $e) {

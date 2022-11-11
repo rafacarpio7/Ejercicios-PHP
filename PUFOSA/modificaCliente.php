@@ -103,9 +103,9 @@
                 $num = $result->fetch();
                 if (!$num['cantidad']>0) {
                     echo "En el campo Vendedor debe introducir un ID de vendedor valido <br>";
-                    $log = fopen("log.txt","a+b");
+                    $log = fopen("log.csv","a+b");
                     $DateAndTime = date('d-m-Y h:i:s a', time());
-                    fwrite($log,"....Funcion UPDATE Erronea id vendedor no valido.....usuario: ".$_SESSION['sesion'].".....$DateAndTime\n");
+                    fwrite($log,"UPDATE;".$_SESSION['sesion'].";$DateAndTime\n");
                     fclose($log);
                 }else{
                     $conn = new PDO("mysql:host=$servername;dbname=pufosa;charset=utf8",$username,$password);
@@ -127,7 +127,10 @@
                         $stmt->bindParam(':limCred', $_REQUEST['limiteCredito']);
                         $stmt->bindParam(':comen', $_REQUEST['comentarios']);
                         $stmt->bindParam(':clienteIDGuardada', $idClienteGuardado);
-                        
+                        $log = fopen("log.csv","a+b");
+                        $DateAndTime = date('d-m-Y h:i:s a', time());
+                        fwrite($log,"UPDATE;".$_SESSION['sesion'].";$DateAndTime\n");
+                        fclose($log);
                         if ($stmt->execute()) {
                             header("Location: clientes.php");
                         }

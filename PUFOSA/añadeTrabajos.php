@@ -87,6 +87,10 @@
 
             if ($num['cantidad']>0) {
                 echo "No se puede dar de alta el Trabajo, ya existe en la base de datos <br>";
+                $log = fopen("log.csv","a+b");
+                $DateAndTime = date('d-m-Y h:i:s a', time());
+                fwrite($log,"INSERT;".$_SESSION['sesion'].";$DateAndTime\n");
+                fclose($log);
             }else {
                     $sql= "INSERT INTO trabajos (Trabajo_ID,FUNCION) " 
                         . "VALUES (:idTrab,:fun)";
@@ -96,6 +100,10 @@
                 $stmt->bindParam(':idTrab', $_REQUEST['idTrabajo']);
                 $stmt->bindParam(':fun', $_REQUEST['funcion']);
                 $stmt->execute();
+                $log = fopen("log.csv","a+b");
+                $DateAndTime = date('d-m-Y h:i:s a', time());
+                fwrite($log,"INSERT;".$_SESSION['sesion'].";$DateAndTime\n");
+                fclose($log);
                 echo "Insertado correctamente";
             }   
         } catch (PDOException $e) {
