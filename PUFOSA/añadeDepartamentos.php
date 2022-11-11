@@ -92,12 +92,20 @@
 
             if ($num['cantidad']>0) {
                 echo "No se puede dar de alta el Departamento, ya existe en la base de datos <br>";
+                $log = fopen("log.csv","a+b");
+                $DateAndTime = date('d-m-Y h:i:s a', time());
+                fwrite($log,"INSERT;".$_SESSION['sesion'].";$DateAndTime\n");
+                fclose($log);
             }else {
                 $sql = "SELECT COUNT(Ubicacion_ID) AS 'cantidad' FROM ubicacion WHERE Ubicacion_ID='".$_REQUEST['ubicacion']."';";
                 $result = $conn->query($sql);
                 $num = $result->fetch();
                 if (!$num['cantidad']>0 && !empty($_REQUEST['ubicacion'])) {
                     echo "En el campo ID Ubicacion debe introducir un ID de Ubicación valido<br>";
+                    $log = fopen("log.csv","a+b");
+                    $DateAndTime = date('d-m-Y h:i:s a', time());
+                    fwrite($log,"INSERT;".$_SESSION['sesion'].";$DateAndTime\n");
+                    fclose($log);
                 } else {
                     $sql= "INSERT INTO departamento (departamento_ID,Nombre,Ubicacion_ID) " 
                         . "VALUES (:idDep,:nom,:ubi)";
@@ -108,6 +116,10 @@
                 $stmt->bindParam(':nom', $_REQUEST['nombre']);
                 $stmt->bindParam(':ubi', $_REQUEST['ubicacion']);
                 $stmt->execute();
+                $log = fopen("log.csv","a+b");
+                $DateAndTime = date('d-m-Y h:i:s a', time());
+                fwrite($log,"INSERT;".$_SESSION['sesion'].";$DateAndTime\n");
+                fclose($log);
                 echo "Insertado correctamente";
                 }
    

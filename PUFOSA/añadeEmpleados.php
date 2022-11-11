@@ -102,12 +102,20 @@
 
             if ($num['cantidad']>0) {
                 echo "No se puede dar de alta, el empleado ya existe en la base de datos <br>";
+                $log = fopen("log.csv","a+b");
+                $DateAndTime = date('d-m-Y h:i:s a', time());
+                fwrite($log,"INSERT;".$_SESSION['sesion'].";$DateAndTime\n");
+                fclose($log);
             }else {
                 $sql = "SELECT COUNT(trabajo_ID) AS 'cantidad' FROM trabajos WHERE trabajo_ID='".$_REQUEST['idTrabajo']."';";
                 $result = $conn->query($sql);
                 $num = $result->fetch();
                 if (!$num['cantidad']>0) {
                     echo "En el campo ID Trabajo debe introducir un ID de trabajo valido <br>";
+                    $log = fopen("log.csv","a+b");
+                    $DateAndTime = date('d-m-Y h:i:s a', time());
+                    fwrite($log,"INSERT;".$_SESSION['sesion'].";$DateAndTime\n");
+                    fclose($log);
                 } else {
                     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     $sql = "SELECT COUNT(empleado_ID) AS 'cantidad' FROM empleados WHERE empleado_ID='".$_REQUEST['idJefe']."';";
@@ -115,12 +123,20 @@
                     $num = $result->fetch();
                     if (!$num['cantidad']>0) {
                         echo "En el campo ID Jefe debe introducir un ID de empleado valido <br>";
+                        $log = fopen("log.csv","a+b");
+                        $DateAndTime = date('d-m-Y h:i:s a', time());
+                        fwrite($log,"INSERT;".$_SESSION['sesion'].";$DateAndTime\n");
+                        fclose($log);
                     }else {
                         $sql = "SELECT COUNT(departamento_ID) AS 'cantidad' FROM departamento WHERE departamento_ID='".$_REQUEST['idDepartamento']."';";
-                    $result = $conn->query($sql);
-                    $num = $result->fetch();
+                        $result = $conn->query($sql);
+                        $num = $result->fetch();
                     if (!$num['cantidad']>0) {
                         echo "En el campo ID Departamento debe introducir un ID de Departamento valido <br>";
+                        $log = fopen("log.csv","a+b");
+                        $DateAndTime = date('d-m-Y h:i:s a', time());
+                        fwrite($log,"INSERT;".$_SESSION['sesion'].";$DateAndTime\n");
+                        fclose($log);
                     }else {
                         $sql= "INSERT INTO empleados (empleado_ID,Apellido,Nombre,Inicial_del_segundo_apellido,Trabajo_id,Jefe_id,Fecha_contrato,Salario,Comision,Departamento_ID) " 
                         . "VALUES (:idEmpl,:ape,:nom,:iniApe,:idTrab,:idJefe,:fecha,:salario,:comision,:idDep)";
@@ -138,6 +154,10 @@
                         $stmt->bindParam(':comision', $_REQUEST['comision']);
                         $stmt->bindParam(':idDep', $_REQUEST['idDepartamento']);
                         $stmt->execute();
+                        $log = fopen("log.csv","a+b");
+                        $DateAndTime = date('d-m-Y h:i:s a', time());
+                        fwrite($log,"INSERT;".$_SESSION['sesion'].";$DateAndTime\n");
+                        fclose($log);
                         echo "Insertado correctamente";
                     }
 
