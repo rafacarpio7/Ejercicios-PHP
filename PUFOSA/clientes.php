@@ -32,7 +32,7 @@
     
 
 
-    echo "<table ><th colspan='11'>Clientes</th>";
+    echo "<table ><th colspan='13'>Clientes</th>";
     echo "<tr>
     <th>ID</th>
     <th>Nombre</th>
@@ -46,6 +46,7 @@
     <th>Limite de Credito</th>
     <th>Comentarios</th>
     <th><button><a href='añadeClientes.php'>Añadir Cliente</button></a></th>
+    <th></th>
     </tr>";
     while ($registro = $statement->fetch()) {
         

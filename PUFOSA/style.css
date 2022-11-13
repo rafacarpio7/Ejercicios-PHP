@@ -102,7 +102,7 @@ th,td {
 }
 
 th {
-    text-align: left;
+    text-align: center;
 }
 
     th {
@@ -133,6 +133,8 @@ input {
 legend {
     font-size: 22px;
     margin-bottom: 20px;
+    margin-top: 20px;
 }
+
 
    
