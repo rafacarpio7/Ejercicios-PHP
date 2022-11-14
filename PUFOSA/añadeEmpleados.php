@@ -56,7 +56,11 @@ include_once "CRUD.php";
             $num = $result->fetch();
 
             if ($num['cantidad']>0) {
-                echo "No se puede dar de alta, el empleado ya existe en la base de datos <br>";
+                echo'<script type="text/javascript">
+                    alert("No se puede dar de alta, el empleado ya existe en la base de datos");
+                    window.location.href="añadeEmpleados.php";
+                    </script>';
+                
                 $log = fopen("log.csv","a+b");
                 $DateAndTime = date('d-m-Y h:i:s a', time());
                 fwrite($log,"INSERT;".$_SESSION['sesion'].";$DateAndTime\n");
@@ -66,7 +70,11 @@ include_once "CRUD.php";
                 $result = $conn->query($sql);
                 $num = $result->fetch();
                 if (!$num['cantidad']>0) {
-                    echo "En el campo ID Trabajo debe introducir un ID de trabajo valido <br>";
+                    echo'<script type="text/javascript">
+                    alert("En el campo ID Trabajo debe introducir un ID de trabajo valido");
+                    window.location.href="añadeEmpleados.php";
+                    </script>';
+                    
                     $log = fopen("log.csv","a+b");
                     $DateAndTime = date('d-m-Y h:i:s a', time());
                     fwrite($log,"INSERT;".$_SESSION['sesion'].";$DateAndTime\n");
@@ -77,7 +85,11 @@ include_once "CRUD.php";
                     $result = $conn->query($sql);
                     $num = $result->fetch();
                     if (!$num['cantidad']>0) {
-                        echo "En el campo ID Jefe debe introducir un ID de empleado valido <br>";
+                        echo'<script type="text/javascript">
+                        alert("En el campo ID Jefe debe introducir un ID de empleado valido");
+                        window.location.href="añadeEmpleados.php";
+                        </script>';
+                        
                         $log = fopen("log.csv","a+b");
                         $DateAndTime = date('d-m-Y h:i:s a', time());
                         fwrite($log,"INSERT;".$_SESSION['sesion'].";$DateAndTime\n");
@@ -87,7 +99,11 @@ include_once "CRUD.php";
                         $result = $conn->query($sql);
                         $num = $result->fetch();
                     if (!$num['cantidad']>0) {
-                        echo "En el campo ID Departamento debe introducir un ID de Departamento valido <br>";
+                        echo'<script type="text/javascript">
+                        alert("En el campo ID Departamento debe introducir un ID de Departamento valido");
+                        window.location.href="añadeEmpleados.php";
+                        </script>';
+                        
                         $log = fopen("log.csv","a+b");
                         $DateAndTime = date('d-m-Y h:i:s a', time());
                         fwrite($log,"INSERT;".$_SESSION['sesion'].";$DateAndTime\n");
@@ -113,7 +129,11 @@ include_once "CRUD.php";
                         $DateAndTime = date('d-m-Y h:i:s a', time());
                         fwrite($log,"INSERT;".$_SESSION['sesion'].";$DateAndTime\n");
                         fclose($log);
-                        echo "Insertado correctamente";
+                        echo'<script type="text/javascript">
+                        alert("Insertado correctamente");
+                        window.location.href="empleados.php";
+                        </script>';
+                        
                     }
 
 

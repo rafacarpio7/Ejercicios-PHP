@@ -55,20 +55,32 @@ include_once "CRUD.php";
             $result = $conn->query($sql);
             $num = $result->fetch();
             if (!$num['cantidad']>0) {
-                echo "En el campo ID Trabajo debe introducir un ID de trabajo valido <br>";
+                echo'<script type="text/javascript">
+                                alert("En el campo ID Trabajo debe introducir un ID de trabajo valido");
+                                window.location.href="modificaEmpleado.php";
+                                </script>';
+                
             } else {
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $sql = "SELECT COUNT(empleado_ID) AS 'cantidad' FROM empleados WHERE empleado_ID='".$_REQUEST['jefeId']."';";
                 $result = $conn->query($sql);
                 $num = $result->fetch();
                 if (!$num['cantidad']>0) {
-                    echo "En el campo ID Jefe debe introducir un ID de empleado valido <br>";
+                    echo'<script type="text/javascript">
+                                alert("En el campo ID Jefe debe introducir un ID de empleado valido");
+                                window.location.href="modificaEmpleado.php";
+                                </script>';
+                    
                 }else {
                     $sql = "SELECT COUNT(departamento_ID) AS 'cantidad' FROM departamento WHERE departamento_ID='".$_REQUEST['departamentoId']."';";
                 $result = $conn->query($sql);
                 $num = $result->fetch();
                 if (!$num['cantidad']>0) {
-                    echo "En el campo ID Departamento debe introducir un ID de Departamento valido <br>";
+                    echo'<script type="text/javascript">
+                                alert("En el campo ID Departamento debe introducir un ID de Departamento valido");
+                                window.location.href="modificaEmpleado.php";
+                                </script>';
+                    
                 }else {
                     $sql= "UPDATE empleados SET empleado_ID=:empID,Apellido=:apell,Nombre=:nom,
                     Inicial_del_segundo_apellido=:iniApe,Trabajo_ID=:trabId,Jefe_ID=:jefeID,
@@ -88,12 +100,19 @@ include_once "CRUD.php";
                     $stmt->bindParam(':comi', $_REQUEST['comision']);
                     $stmt->bindParam(':depID', $_REQUEST['departamentoId']);
                     $stmt->bindParam(':empleadoIDGuardada', $idEmpleadoGuardado);
-                    $stmt->execute();
+
+
+                    if($stmt->execute()){
+                        echo'<script type="text/javascript">
+                                alert("Empleado modificado correctamente");
+                                window.location.href="empleados.php";
+                                </script>';
+                    }
                     $log = fopen("log.csv","a+b");
                     $DateAndTime = date('d-m-Y h:i:s a', time());
                     fwrite($log,"UPDATE;".$_SESSION['sesion'].";$DateAndTime\n");
                     fclose($log);
-                    echo "Modificado correctamente";
+                    
                 }
                 }   
             }

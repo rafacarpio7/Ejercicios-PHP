@@ -25,12 +25,20 @@ if (isset($_REQUEST['btnBorrar'])) {
                 $DateAndTime = date('d-m-Y h:i:s a', time());
                 fwrite($log,"DELETE;".$_SESSION['sesion'].";$DateAndTime\n");
                 fclose($log);
+                echo'<script type="text/javascript">
+                    alert("La Ubicacion ha sido borrada correctamente");
+                    window.location.href="ubicacion.php";
+                    </script>';
         }        
 
     } catch (PDOException $e) {
         echo 'ERROR '. $e->getMessage();
+        echo'<script type="text/javascript">
+                    alert("La Ubicacion no puede ser borrada");
+                    window.location.href="ubicacion.php";
+                    </script>';
     }
     $conn = null ;
 }
-header("Location: ubicacion.php");
+
 ?>

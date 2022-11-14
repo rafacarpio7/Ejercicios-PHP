@@ -25,13 +25,20 @@ if (isset($_REQUEST['btnBorrar'])) {
                 $DateAndTime = date('d-m-Y h:i:s a', time());
                 fwrite($log,"DELETE;".$_SESSION['sesion'].";$DateAndTime\n");
                 fclose($log);
-                
+                echo'<script type="text/javascript">
+                    alert("El Cliente ha sido borrado correctamente");
+                    window.location.href="clientes.php";
+                    </script>';
         }        
 
     } catch (PDOException $e) {
         echo 'ERROR '. $e->getMessage();
+        echo'<script type="text/javascript">
+                    alert("El cliente no puede ser borrado");
+                    window.location.href="clientes.php";
+                    </script>';
     }
     $conn = null ;
 }
-header("Location: clientes.php");
+
 ?>

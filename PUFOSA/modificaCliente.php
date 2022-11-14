@@ -57,7 +57,11 @@ include_once "CRUD.php";
                 $result = $conn->query($sql);
                 $num = $result->fetch();
                 if (!$num['cantidad']>0) {
-                    echo "En el campo Vendedor debe introducir un ID de vendedor valido <br>";
+                    echo'<script type="text/javascript">
+                    alert("En el campo Vendedor debe introducir un ID de vendedor valido");
+                    window.location.href="modificaCliente.php";
+                    </script>';
+                    
                     $log = fopen("log.csv","a+b");
                     $DateAndTime = date('d-m-Y h:i:s a', time());
                     fwrite($log,"UPDATE;".$_SESSION['sesion'].";$DateAndTime\n");
@@ -87,7 +91,10 @@ include_once "CRUD.php";
                         fwrite($log,"UPDATE;".$_SESSION['sesion'].";$DateAndTime\n");
                         fclose($log);
                         if ($stmt->execute()) {
-                            header("Location: clientes.php");
+                            echo'<script type="text/javascript">
+                                alert("Cliente Modificado correctamente");
+                                window.location.href="clientes.php";
+                                </script>';
                         }
                 }
               
