@@ -8,9 +8,6 @@
     <title>PUFOSA</title>
 </head>
 <body>
-
-    
-
     <?php
     include_once "CRUD.php";
     $servername = "localhost";

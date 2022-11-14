@@ -8,7 +8,7 @@
         <title>Document</title>
     </head>
     <?php
-include_once "CRUD.php"; 
+    include_once "CRUD.php"; 
     ?>
     <body>
         <form action="" method="post">
