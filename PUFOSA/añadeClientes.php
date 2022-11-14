@@ -99,7 +99,7 @@ include_once "CRUD.php";
                 $DateAndTime = date('d-m-Y h:i:s a', time());
                 fwrite($log,"INSERT;".$_SESSION['sesion'].";$DateAndTime\n");
                 fclose($log);
-                echo "Insertado correctamente";
+                echo "window.alert(Insertado correctamente)";
                 }
                 
                 

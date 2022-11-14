@@ -32,11 +32,12 @@
     
 
 
-    echo "<table ><th colspan='2'>Ubicacion</th>";
+    echo "<table ><th colspan='4'>Ubicacion</th>";
     echo "<tr>
     <th>ID Ubicacion</th>
     <th>Grupo Regional</th>
     <th><button><a href='añadeUbicacion.php'>Añadir Ubicacion</button></a></th>
+    <th></th>
     </tr>";
     while ($registro = $statement->fetch()) {
         
