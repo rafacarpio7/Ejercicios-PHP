@@ -14,7 +14,7 @@
 
     if (!empty($_SESSION['presidente'])) {
         echo '<header>
-        <a class="logo-inicio" href="index.php" ><img class="logo"  src="logo.png" alt="logo"></a>
+        <a class="logo-inicio" href="inicio.php" ><img class="logo"  src="logo.png" alt="logo"></a>
             <nav>
                 <ul class="navbar">
                     <li><a href="clientes.php"> Clientes </a></li>
@@ -30,7 +30,7 @@
         </header>';
     } else if(!empty($_SESSION['admin'])){
         echo '<header>
-        <a class="logo-inicio" href="index.php" ><img class="logo"  src="logo.png" alt="logo"></a>
+        <a class="logo-inicio" href="inicio.php" ><img class="logo"  src="logo.png" alt="logo"></a>
             <nav>
                 <ul class="navbar">
                     <li><a href="clientes.php"> Clientes </a></li>
@@ -46,7 +46,7 @@
         </header>';
     }else {
         echo '<header>
-        <a class="logo-inicio" href="index.php" ><img class="logo"  src="logo.png" alt="logo"></a>
+        <a class="logo-inicio" href="inicio.php" ><img class="logo"  src="logo.png" alt="logo"></a>
             <nav>
                 <ul class="navbar">
                     <li><a href="clientes.php"> Clientes </a></li>

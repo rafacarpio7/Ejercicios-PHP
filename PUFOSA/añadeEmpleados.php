@@ -12,30 +12,30 @@ include_once "CRUD.php";
     ?>
 <body>
     <form action="" method="post">
-        <fieldset>
+        
             <legend>Nuevo Empleados</legend>
             ID Empleado :
             <input type="number" name="idEmpleado" required><br>
             Apellido :
-            <input type="text" name="apellido" required><br>
+            <input type="text" name="apellido" ><br>
             Nombre : 
-            <input type="text" name="nombre" required><br>
+            <input type="text" name="nombre" ><br>
             Inicial Segundo Apellido : 
-            <input type="text" name="iniApellido" required><br>
+            <input type="text" name="iniApellido" ><br>
             ID Trabajo : 
             <input type="text" name="idTrabajo" required><br>
             ID Jefe :
-            <input type="text" name="idJefe" required><br>
+            <input type="text" name="idJefe" ><br>
             Fecha de Contrato :
-            <input type="date" name="fechaContrato" required><br>
+            <input type="date" name="fechaContrato" ><br>
             Salario : 
-            <input type="text" name="salario" required><br>
+            <input type="text" name="salario" ><br>
             Comision : 
-            <input type="text" name="comision" required><br>
+            <input type="text" name="comision" ><br>
             ID Departamento :
             <input type="text" name="idDepartamento" required><br>
             <input type="submit" name="btnAñadir" value="Añadir">
-        </fieldset>
+        
     </form>
 
 <?php

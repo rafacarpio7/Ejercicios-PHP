@@ -12,14 +12,14 @@ include_once "CRUD.php";
     ?>
 <body>
     <form action="" method="post">
-        <fieldset>
+        
             <legend>Nuevo Trabajo</legend>
             ID Trabajo:
             <input type="number" name="idTrabajo" required><br>
             Funcion :
-            <input type="text" name="funcion" required><br>
+            <input type="text" name="funcion" ><br>
             <input type="submit" name="btnAñadir" value="Añadir">
-        </fieldset>
+        
     </form>
 
 <?php

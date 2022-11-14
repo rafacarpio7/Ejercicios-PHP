@@ -12,7 +12,7 @@ include_once "CRUD.php";
     ?>
 <body>
     <form action="" method="post">
-        <fieldset>
+        
             <legend>Modifica Departamento</legend>
             ID Departamento :
             <input type="text" name="idDepartamento" value="<?=$_REQUEST['departamentoId']?>"disabled><br>
@@ -21,7 +21,7 @@ include_once "CRUD.php";
             ID Ubicacion : 
             <input type="text" name="idUbicacion" value="<?=$_REQUEST['ubicacionId']?>" required><br>
             <input type="submit" name="btnModificar" value="Modificar">
-        </fieldset>
+        
     </form>
 
     <?php

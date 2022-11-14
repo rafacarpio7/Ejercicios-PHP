@@ -12,14 +12,14 @@
     ?>
     <body>
         <form action="" method="post">
-            <fieldset>
+            
                 <legend>Modifica Trabajo</legend>
                 ID Trabajo :
                 <input type="text" name="idTrabajo" value="<?=$_REQUEST['trabajoId']?>"disabled><br>
                 Funcion :
                 <input type="text" name="funcion" value="<?=$_REQUEST['funcion']?>" required><br>
                 <input type="submit" name="btnModificar" value="Modificar">
-            </fieldset>
+            
         </form>
 
         <?php

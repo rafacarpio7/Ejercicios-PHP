@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" />
-    <title>PUFOSA</title>
+    <title>PUFOSA - Trabajos</title>
 </head>
 <body>
  
@@ -34,7 +34,7 @@
     
 
 
-    echo "<table ><th colspan='4'>Trabajos</th>";
+    echo "<table ><th style='font-size: 28px'; colspan='4'>Trabajos</th>";
     echo "<tr>
     <th>ID Trabajo</th>
     <th>Funcion</th>

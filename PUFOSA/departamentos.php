@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" />
-    <title>PUFOSA</title>
+    <title>PUFOSA - Departamentos</title>
 </head>
 <body>
     <?php
@@ -32,7 +32,7 @@
     
 
 
-    echo "<table ><th colspan='5'>Departamentos</th>";
+    echo "<table ><th style='font-size: 28px'; colspan='5'>Departamentos</th>";
     echo "<tr>
     <th>ID Departamento</th>
     <th>Nombre</th>

@@ -5,14 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    
+    <title>Pufosa - Inicio</title>
 </head>
-<body>
+<body style="background-color: #fff8f5;">
     <?php
     include_once "CRUD.php";
     ?>
-
-    <div>
+    <h1>BIENVENIDO <?=$_SESSION['nombre']." ".$_SESSION['apellido']?> </h1><br>
+    <div class="inicio">
+       
+        <img src="logo.png"  alt="">
         
     </div>
 

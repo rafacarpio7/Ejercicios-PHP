@@ -40,6 +40,13 @@
         $username,$password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+        $statement2= $conn->query("SELECT Nombre,Apellido FROM EMPLEADOS WHERE EMPLEADO_ID=".$_SESSION['sesion']."");
+
+        while ($consulta = $statement2->fetch()) {
+            $_SESSION['nombre']=$consulta['Nombre'];
+            $_SESSION['apellido']=$consulta['Apellido'];
+        }
+
         $statement = $conn->prepare("SELECT EMPLEADO_ID FROM EMPLEADOS WHERE EMPLEADO_ID=:empleadoId");
 
         $statement->bindParam(':empleadoId', $_REQUEST['idLogin']);
@@ -78,8 +85,12 @@
                 header("Location: inicio.php");
             }
 
+
         } else {
-            echo "Usuario o contraseña no valida ";
+            echo'<script type="text/javascript">
+                    alert("Usuario o contraseña no valida");
+                    window.location.href="index.php";
+                    </script>';
         }
 
     }catch (PDOException $e) {

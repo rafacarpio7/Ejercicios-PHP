@@ -12,7 +12,7 @@ include_once "CRUD.php";
     ?>
 <body>
     <form action="" method="post">
-        <fieldset>
+        
             <legend>Modifica Cliente</legend>
             ID Cliente :
             <input type="text" name="idCliente" value="<?=$_REQUEST['idCliente']?>" disabled><br>
@@ -37,7 +37,7 @@ include_once "CRUD.php";
             Comentarios : 
             <input type="text" name="comentarios" value="<?=$_REQUEST['comentarioCli']?>" required><br>
             <input type="submit" name="btnModificar" value="Modificar">
-        </fieldset>
+        
     </form>
 
     <?php

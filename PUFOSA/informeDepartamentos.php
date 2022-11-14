@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" />
-    <title>PUFOSA</title>
+    <title>PUFOSA - Informes</title>
 </head>
 <body>
 
@@ -38,7 +38,7 @@
     
 
 
-    echo "<table ><th colspan='6'>Informe de Departamentos</th>";
+    echo "<table ><th style='font-size: 28px'; colspan='6'>Informe de Departamentos</th>";
     echo "<tr>
     <th>Nombre Departamento</th>
     <th>Grupo Regional</th>

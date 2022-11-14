@@ -5,39 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <title>Pufosa - Nuevo cliente</title>
 </head>
 <?php
 include_once "CRUD.php";
     ?>
 <body>
     <form action="" method="post">
-        <fieldset>
+        
             <legend>Nuevo Cliente</legend>
             ID Cliente :
             <input type="number" name="idCliente" required><br>
             Nombre :
-            <input type="text" name="nombre" required><br>
+            <input type="text" name="nombre" ><br>
             Direccion : 
-            <input type="text" name="direccion" required><br>
+            <input type="text" name="direccion" ><br>
             Ciudad : 
-            <input type="text" name="ciudad" required><br>
+            <input type="text" name="ciudad" ><br>
             Estado : 
-            <input type="text" name="estado" required><br>
+            <input type="text" name="estado" ><br>
             Codigo Postal :
-            <input type="text" name="codigoPostal" required><br>
+            <input type="text" name="codigoPostal" ><br>
             Codigo Area :
-            <input type="text" name="codigoArea" required><br>
+            <input type="text" name="codigoArea" ><br>
             Telefono : 
-            <input type="text" name="telefono" required><br>
+            <input type="text" name="telefono" ><br>
             Vendedor : 
             <input type="text" name="vendedorID" required><br>
             Limite de Credito :
-            <input type="text" name="limiteCredito" required><br>
+            <input type="text" name="limiteCredito" ><br>
             Comentarios : 
-            <input type="text" name="comentarios" required><br>
+            <input type="text" name="comentarios" ><br>
             <input type="submit" name="btnAñadir" value="Añadir">
-        </fieldset>
+        
     </form>
 
 <?php

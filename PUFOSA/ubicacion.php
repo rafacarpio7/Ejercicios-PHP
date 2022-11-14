@@ -32,7 +32,7 @@
     
 
 
-    echo "<table ><th colspan='4'>Ubicacion</th>";
+    echo "<table ><th style='font-size: 28px'; colspan='4'>Ubicacion</th>";
     echo "<tr>
     <th>ID Ubicacion</th>
     <th>Grupo Regional</th>
