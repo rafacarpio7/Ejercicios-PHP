@@ -43,7 +43,10 @@ include_once "CRUD.php";
                 fwrite($log,"UPDATE;".$_SESSION['sesion'].";$DateAndTime\n");
                 fclose($log);
                 if ($stmt->execute()) {
-                    header("Location: Ubicacion.php");
+                    echo'<script type="text/javascript">
+                                alert("Ubicacion modificada correctamente");
+                                window.location.href="ubicacion.php";
+                                </script>';
                 }
                 
               

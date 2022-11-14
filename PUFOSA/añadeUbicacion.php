@@ -41,7 +41,11 @@ include_once "CRUD.php";
 
 
             if ($num['cantidad']>0) {
-                echo "No se puede dar de alta la Ubicacion, ya existe en la base de datos <br>";
+                echo'<script type="text/javascript">
+                        alert("No se puede dar de alta la Ubicacion, ya existe en la base de datos");
+                        window.location.href="añadeUbicacion.php";
+                        </script>';
+                
                 $log = fopen("log.csv","a+b");
                 $DateAndTime = date('d-m-Y h:i:s a', time());
                 fwrite($log,"INSERT;".$_SESSION['sesion'].";$DateAndTime\n");
@@ -59,7 +63,11 @@ include_once "CRUD.php";
                 $DateAndTime = date('d-m-Y h:i:s a', time());
                 fwrite($log,"INSERT;".$_SESSION['sesion'].";$DateAndTime\n");
                 fclose($log);
-                echo "Insertado correctamente";
+                echo'<script type="text/javascript">
+                        alert("Insertado correctamente");
+                        window.location.href="ubicacion.php";
+                        </script>';
+                
             }   
         } catch (PDOException $e) {
             echo 'Conexion fallida'. $e->getMessage();

@@ -8,7 +8,7 @@
         <title>Document</title>
     </head>
     <?php
-include_once "CRUD.php"; 
+    include_once "CRUD.php"; 
     ?>
     <body>
         <form action="" method="post">
@@ -43,12 +43,16 @@ include_once "CRUD.php";
                     fwrite($log,"UPDATE;".$_SESSION['sesion'].";$DateAndTime\n");
                     fclose($log);
                     if ($stmt->execute()) {
-                        header("Location: trabajos.php");
+                        echo'<script type="text/javascript">
+                                alert("Trabajo modificado correctamente");
+                                window.location.href="trabajos.php";
+                                </script>';
                     }
                     
                 
             }catch (PDOException $e) {
                 echo 'Conexion fallida'. $e->getMessage();
+                
             }
         }
             $conn=null;

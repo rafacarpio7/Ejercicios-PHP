@@ -62,7 +62,11 @@ include_once "CRUD.php";
             $num = $result->fetch();
 
             if ($num['cantidad']>0) {
-                echo "No se puede dar de alta el cliente ya existe en la base de datos <br>";
+                echo'<script type="text/javascript">
+                    alert("No se puede dar de alta el cliente ya existe en la base de datos");
+                    window.location.href="añadeClientes.php";
+                    </script>';
+                
                 $log = fopen("log.csv","a+b");
                 $DateAndTime = date('d-m-Y h:i:s a', time());
                 fwrite($log,"INSERT;".$_SESSION['sesion'].";$DateAndTime\n");
@@ -72,7 +76,11 @@ include_once "CRUD.php";
                 $result = $conn->query($sql);
                 $num = $result->fetch();
                 if (!$num['cantidad']>0) {
-                    echo "En el campo Vendedor debe introducir un ID de vendedor valido <br>";
+                    echo'<script type="text/javascript">
+                    alert("En el campo Vendedor debe introducir un ID de vendedor valido");
+                    window.location.href="añadeClientes.php";
+                    </script>';
+                    
                     $log = fopen("log.txt","a+b");
                 $DateAndTime = date('d-m-Y h:i:s a', time());
                 fwrite($log,"INSERT;".$_SESSION['sesion'].";$DateAndTime\n");
@@ -99,7 +107,10 @@ include_once "CRUD.php";
                 $DateAndTime = date('d-m-Y h:i:s a', time());
                 fwrite($log,"INSERT;".$_SESSION['sesion'].";$DateAndTime\n");
                 fclose($log);
-                echo "window.alert(Insertado correctamente)";
+                echo'<script type="text/javascript">
+                    alert("Insertado Correctamente");
+                    window.location.href="clientes.php";
+                    </script>';
                 }
                 
                 

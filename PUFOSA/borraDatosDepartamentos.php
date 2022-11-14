@@ -28,11 +28,19 @@ if (isset($_REQUEST['btnBorrar'])) {
                 fclose($log);
         }    
 
+        echo'<script type="text/javascript">
+        alert("El Departamento borrado correctamente");
+        window.location.href="departamentos.php";
+        </script>';
     } catch (PDOException $e) {
         echo 'ERROR '. $e->getMessage();
-        $error ="EL departamento no puede ser borrado";
+        echo'<script type="text/javascript">
+                    alert("El Departamento no puede ser borrado");
+                    window.location.href="departamentos.php";
+                    </script>';
+        
     }
     $conn = null ;
 }
-header("Location: departamentos.php?msg=$error");
+//header("Location: departamentos.php?msg=$error");
 ?>
