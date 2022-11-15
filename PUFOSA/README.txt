@@ -1,3 +1,4 @@
+# Nombre de la base de datos : pufosa (en phpmyadmin)
 # Datos de login 
 
     -Usuario : id de empleado que exista en la base de datos
