@@ -11,6 +11,8 @@
 <body style="background-color: #fff8f5;">
     <?php
     include_once "CRUD.php";
+
+    // incluimos el codigo de nuestro CRUD y mostramos la bienvenida a nuestro usuario
     ?>
     <h1>BIENVENIDO <?=$_SESSION['nombre']." ".$_SESSION['apellido']?> </h1><br>
     <div class="inicio">

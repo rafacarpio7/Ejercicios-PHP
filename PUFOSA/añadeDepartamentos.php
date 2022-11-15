@@ -46,7 +46,7 @@ include_once "CRUD.php";
             $result = $conn->query($sql);
 
             $num = $result->fetch();
-
+            //Comprobacion si existe un departamento con el id introducido en el campo
             if ($num['cantidad']>0) {
                 echo'<script type="text/javascript">
                     alert("No se puede dar de alta el Departamento, ya existe en la base de datos");
@@ -61,6 +61,7 @@ include_once "CRUD.php";
                 $sql = "SELECT COUNT(Ubicacion_ID) AS 'cantidad' FROM ubicacion WHERE Ubicacion_ID='".$_REQUEST['ubicacion']."';";
                 $result = $conn->query($sql);
                 $num = $result->fetch();
+                //Comprobacion si en el campo ubicacion se ha introducido una id ubicacion correcta
                 if (!$num['cantidad']>0 && !empty($_REQUEST['ubicacion'])) {
                     echo'<script type="text/javascript">
                     alert("En el campo ID Ubicacion debe introducir un ID de Ubicación valido");
@@ -72,6 +73,7 @@ include_once "CRUD.php";
                     fwrite($log,"INSERT;".$_SESSION['sesion'].";$DateAndTime\n");
                     fclose($log);
                 } else {
+                    //insercion de datos si todo ha ido como esperamos
                     $sql= "INSERT INTO departamento (departamento_ID,Nombre,Ubicacion_ID) " 
                         . "VALUES (:idDep,:nom,:ubi)";
 

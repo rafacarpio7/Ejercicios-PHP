@@ -12,7 +12,9 @@
     ?>
     <body>
         <form action="" method="post">
-            
+            <!-- Formulario con los datos prestablecidos del dato de la tabla a modificar
+                    establecido como value del propio campo del formulario,
+                    solo vamos a bloquear el campo id para que no pueda modificarse -->
                 <legend>Modifica Trabajo</legend>
                 ID Trabajo :
                 <input type="text" name="idTrabajo" value="<?=$_REQUEST['trabajoId']?>"disabled><br>

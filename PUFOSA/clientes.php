@@ -31,7 +31,7 @@
 
     
 
-
+    // Mostramos los clientes en una tabla
     echo "<table ><th style='font-size: 28px'; colspan='13'>Clientes</th>";
     echo "<tr>
     <th>ID</th>
@@ -50,7 +50,8 @@
     </tr>";
     while ($registro = $statement->fetch()) {
         
-
+        // ademas de los propios botones de borrar y modificar tambien insertamos campos de 
+        // formularios como hidden donde nos hacen llegar la informacion a los scripts de borrado y modificado
         echo "<tr>
                 <td>".$registro['CLIENTE_ID']."</td>
                 <td>".$registro['nombre']."</td>

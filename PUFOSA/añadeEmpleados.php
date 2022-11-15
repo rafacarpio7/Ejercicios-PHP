@@ -48,13 +48,11 @@ include_once "CRUD.php";
     if (isset($_REQUEST['btnAñadir'])) {
         try {
             $conn = new PDO("mysql:host=$servername;dbname=pufosa;charset=utf8",$username,$password);
-
-
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "SELECT COUNT(*) AS 'cantidad' FROM empleados WHERE empleado_ID='".$_REQUEST['idEmpleado']."';";
             $result = $conn->query($sql);
             $num = $result->fetch();
-
+            //Comprobacion si existe un empleado con el mismo id que el introducido en el campo
             if ($num['cantidad']>0) {
                 echo'<script type="text/javascript">
                     alert("No se puede dar de alta, el empleado ya existe en la base de datos");
@@ -69,6 +67,7 @@ include_once "CRUD.php";
                 $sql = "SELECT COUNT(trabajo_ID) AS 'cantidad' FROM trabajos WHERE trabajo_ID='".$_REQUEST['idTrabajo']."';";
                 $result = $conn->query($sql);
                 $num = $result->fetch();
+                // comprobacion si el id de trabajo corresponde con un ide trabajo existente
                 if (!$num['cantidad']>0) {
                     echo'<script type="text/javascript">
                     alert("En el campo ID Trabajo debe introducir un ID de trabajo valido");
@@ -84,6 +83,7 @@ include_once "CRUD.php";
                     $sql = "SELECT COUNT(empleado_ID) AS 'cantidad' FROM empleados WHERE empleado_ID='".$_REQUEST['idJefe']."';";
                     $result = $conn->query($sql);
                     $num = $result->fetch();
+                    // Comprobacion si en el campo id jefe introducimos un id de empleado correcto
                     if (!$num['cantidad']>0) {
                         echo'<script type="text/javascript">
                         alert("En el campo ID Jefe debe introducir un ID de empleado valido");
@@ -98,6 +98,7 @@ include_once "CRUD.php";
                         $sql = "SELECT COUNT(departamento_ID) AS 'cantidad' FROM departamento WHERE departamento_ID='".$_REQUEST['idDepartamento']."';";
                         $result = $conn->query($sql);
                         $num = $result->fetch();
+                        //Comrprobacion si en el campo departamento id hemos introducido un id de departamento valido
                     if (!$num['cantidad']>0) {
                         echo'<script type="text/javascript">
                         alert("En el campo ID Departamento debe introducir un ID de Departamento valido");
@@ -112,7 +113,7 @@ include_once "CRUD.php";
                         $sql= "INSERT INTO empleados (empleado_ID,Apellido,Nombre,Inicial_del_segundo_apellido,Trabajo_id,Jefe_id,Fecha_contrato,Salario,Comision,Departamento_ID) " 
                         . "VALUES (:idEmpl,:ape,:nom,:iniApe,:idTrab,:idJefe,:fecha,:salario,:comision,:idDep)";
 
-
+                        //Insercion de datos correctamente
                         $stmt = $conn->prepare($sql);
                         $stmt->bindParam(':idEmpl', $_REQUEST['idEmpleado']);
                         $stmt->bindParam(':ape', $_REQUEST['apellido']);

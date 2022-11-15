@@ -50,7 +50,7 @@
     </tr>";
     while ($registro = $statement->fetch()) {
         
-
+        // Mostramos la informacion de departamentos solo para los user presidentes
         echo "<tr>
                 <td>".$registro['nomDep']."</td>
                 <td>".$registro['GrupoRegional']."</td>

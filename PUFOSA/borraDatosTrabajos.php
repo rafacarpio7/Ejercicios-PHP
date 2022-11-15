@@ -33,6 +33,7 @@ if (isset($_REQUEST['btnBorrar'])) {
 
     } catch (PDOException $e) {
         echo 'ERROR '. $e->getMessage();
+        // Si no se puede borrar por integridad de la base de datos lanzamos un alert
         echo'<script type="text/javascript">
                     alert("El Trabajo no puede ser borrado");
                     window.location.href="trabajos.php";

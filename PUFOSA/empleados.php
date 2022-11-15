@@ -50,7 +50,8 @@
     </tr>";
     while ($registro = $statement->fetch()) {
         
-
+        // ademas de los propios botones de borrar y modificar tambien insertamos campos de 
+        // formularios como hidden donde nos hacen llegar la informacion a los scripts de borrado y modificado
         echo "<tr>
                 <td>".$registro['empleado_ID']."</td>
                 <td>".$registro['Apellido']."</td>

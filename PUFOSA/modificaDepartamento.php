@@ -12,7 +12,9 @@ include_once "CRUD.php";
     ?>
 <body>
     <form action="" method="post">
-        
+        <!-- Formulario con los datos prestablecidos del dato de la tabla a modificar
+                    establecido como value del propio campo del formulario,
+                    solo vamos a bloquear el campo id para que no pueda modificarse -->
             <legend>Modifica Departamento</legend>
             ID Departamento :
             <input type="text" name="idDepartamento" value="<?=$_REQUEST['departamentoId']?>"disabled><br>
@@ -33,7 +35,8 @@ include_once "CRUD.php";
     if (isset($_REQUEST['btnModificar'])) {
         try {
             $conn = new PDO("mysql:host=$servername;dbname=pufosa;charset=utf8",$username,$password);
-
+            //En este apartado comprobamos lo mismo que hemos comprobado a la hora de insertar ya que
+            // es necesario que ciertos campos que son foreign key existan en la propia base de datos
 
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             

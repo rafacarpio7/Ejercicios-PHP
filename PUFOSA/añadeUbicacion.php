@@ -39,7 +39,7 @@ include_once "CRUD.php";
             $result = $conn->query($sql);
             $num = $result->fetch();
 
-
+            //Comprobacion si ya existe el id de ubicacion en nuestra base de datos
             if ($num['cantidad']>0) {
                 echo'<script type="text/javascript">
                         alert("No se puede dar de alta la Ubicacion, ya existe en la base de datos");
@@ -51,6 +51,7 @@ include_once "CRUD.php";
                 fwrite($log,"INSERT;".$_SESSION['sesion'].";$DateAndTime\n");
                 fclose($log);
             }else {
+                // Insercion de datos 
                     $sql= "INSERT INTO ubicacion (Ubicacion_ID,GrupoRegional) " 
                         . "VALUES (:idUbi,:gruReg)";
 

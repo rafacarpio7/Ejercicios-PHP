@@ -18,7 +18,9 @@
     
 
     while (feof($log)==false) {
-
+        // mostramos por cada linea hasta que encuentra un salto de linea en un td de una tabla
+        // hasta que no encuentra mas lineas
+        // En este caso he intentado tambien sacarlo para establecer un formato mas estetico pero sin resultado
         echo "<tr>
                 <td>".fgets($log)."</td>
                 </tr>";

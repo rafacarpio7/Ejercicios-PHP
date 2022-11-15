@@ -19,4 +19,4 @@
 
     -Logo propio diseñado con colores calidos
     -Nav bar diseñado para manejarse rapidamente
-    -Paleta de colores partiendo de los colores del logo(pastel)
+    -Paleta de colores partiendo de los colores del logo (colores pastel)

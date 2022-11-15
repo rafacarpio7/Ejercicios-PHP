@@ -12,6 +12,9 @@
 <?php
     session_start();
 
+    // segun la informacion guardada en nuestro login sabremos por la sesion si es admin presidente o empleado,
+    // por tanto aqui se elige el menu de navegacion que vamos a mostrar segun sea .
+
     if (!empty($_SESSION['presidente'])) {
         echo '<header>
         <a class="logo-inicio" href="inicio.php" ><img class="logo"  src="logo.png" alt="logo"></a>
