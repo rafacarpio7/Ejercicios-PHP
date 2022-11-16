@@ -27,18 +27,13 @@ include_once "CRUD.php";
     </form>
 
     <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $sql="";
     $idDepartamentoGuardado = $_REQUEST['departamentoId'];
     if (isset($_REQUEST['btnModificar'])) {
         try {
-            $conn = new PDO("mysql:host=$servername;dbname=pufosa;charset=utf8",$username,$password);
+            include_once "conexion.php";
             //En este apartado comprobamos lo mismo que hemos comprobado a la hora de insertar ya que
             // es necesario que ciertos campos que son foreign key existan en la propia base de datos
 
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
                 $sql = "SELECT COUNT(Ubicacion_ID) AS 'cantidad' FROM ubicacion WHERE Ubicacion_ID='".$_REQUEST['ubicacionId']."';";
                 $result = $conn->query($sql);
@@ -54,8 +49,7 @@ include_once "CRUD.php";
                     fwrite($log,"UPDATE;".$_SESSION['sesion'].";$DateAndTime\n");
                     fclose($log);
                 }else{
-                    $conn = new PDO("mysql:host=$servername;dbname=pufosa;charset=utf8",$username,$password);
-                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    
         
                     $sql = "UPDATE departamento SET departamento_ID=:depID,Nombre=:nom,Ubicacion_ID=:ubicID WHERE departamento_ID=:departamentoIDGuardada;";
         

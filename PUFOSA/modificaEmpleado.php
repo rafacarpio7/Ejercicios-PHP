@@ -48,11 +48,11 @@ include_once "CRUD.php";
     $idEmpleadoGuardado = $_REQUEST['empleadoId'];
     if (isset($_REQUEST['btnModificar'])) {
         try {
-            $conn = new PDO("mysql:host=$servername;dbname=pufosa;charset=utf8",$username,$password);
+            include_once "conexion.php";
 
             //En este apartado comprobamos lo mismo que hemos comprobado a la hora de insertar ya que
             // es necesario que ciertos campos que son foreign key existan en la propia base de datos
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
             
             $sql = "SELECT COUNT(trabajo_ID) AS 'cantidad' FROM trabajos WHERE trabajo_ID='".$_REQUEST['trabajoId']."';";
             $result = $conn->query($sql);
@@ -64,7 +64,7 @@ include_once "CRUD.php";
                                 </script>';
                 
             } else {
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                
                 $sql = "SELECT COUNT(empleado_ID) AS 'cantidad' FROM empleados WHERE empleado_ID='".$_REQUEST['jefeId']."';";
                 $result = $conn->query($sql);
                 $num = $result->fetch();

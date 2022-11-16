@@ -10,14 +10,9 @@
 <body>
     <?php
     include_once "CRUD.php";
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
 
     try {
-        $conexion = new PDO("mysql:host=$servername;dbname=pufosa;charset=utf8",$username,$password);
-
-        $conexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        include_once "conexion.php";
 
        
     } catch (PDOException $e) {
@@ -25,7 +20,7 @@
     }
     
 
-    $statement = $conexion->prepare("SELECT * FROM cliente ");
+    $statement = $conn->prepare("SELECT * FROM cliente ");
 
     $statement->execute();
 

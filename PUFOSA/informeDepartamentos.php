@@ -13,22 +13,15 @@
 
     <?php
     include_once "CRUD.php";
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
 
     try {
-        $conexion = new PDO("mysql:host=$servername;dbname=pufosa;charset=utf8",$username,$password);
-
-        $conexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-
-       
+        include_once "conexion.php";
     } catch (PDOException $e) {
         echo 'Conexion fallida'. $e->getMessage();
     }
     
 
-    $statement = $conexion->prepare("SELECT departamento.Nombre AS nomDep,GrupoRegional ,COUNT(empleado_id),MAX(Salario),MIN(Salario),AVG(Salario) FROM empleados
+    $statement = $conn->prepare("SELECT departamento.Nombre AS nomDep,GrupoRegional ,COUNT(empleado_id),MAX(Salario),MIN(Salario),AVG(Salario) FROM empleados
     INNER JOIN departamento ON departamento.departamento_ID=empleados.Departamento_ID
     INNER JOIN ubicacion ON ubicacion.Ubicacion_ID=departamento.Ubicacion_ID
     GROUP BY departamento.Nombre,ubicacion.GrupoRegional;");

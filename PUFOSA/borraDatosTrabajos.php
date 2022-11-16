@@ -2,14 +2,10 @@
 <?php
 session_start();
 if (isset($_REQUEST['btnBorrar'])) {
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
+    include_once "conexion.php";
 
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=pufosa;charset=utf8",
-        $username,$password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
         $sql = "SELECT Trabajo_ID FROM trabajos WHERE Trabajo_ID=:idTrabajo;";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':idTrabajo', $_REQUEST['codTrabajo']);

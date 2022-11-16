@@ -32,16 +32,9 @@
     //Guardamos el id que se usa en el login para usos posteriores -
     // si este no existe o es erroneo se va a machacar este dato hasta que sea un login existoso y ahi si tendremos un id correcto
     $_SESSION['sesion']=$_REQUEST['idLogin'];
-    
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
 
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=pufosa;charset=utf8",
-        $username,$password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+        include_once "conexion.php";
         $statement2= $conn->query("SELECT Nombre,Apellido FROM EMPLEADOS WHERE EMPLEADO_ID=".$_SESSION['sesion']."");
         //Sacamos el nombre y el apellido para mostrar en la pestaña de indice.php del usuario logueado
         while ($consulta = $statement2->fetch()) {

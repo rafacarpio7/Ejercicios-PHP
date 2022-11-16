@@ -41,17 +41,11 @@ include_once "CRUD.php";
     </form>
 
 <?php
-    
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $sql="";
 
     if (isset($_REQUEST['btnAñadir'])) {
         try {
-            // Conexion con atributos definidos
-            $conn = new PDO("mysql:host=$servername;dbname=pufosa;charset=utf8",$username,$password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            include_once "conexion.php";
+            
             //consulta para comprobar si el cliente introducido existe en la base de datos y coincide con uno existente.
             $sql = "SELECT COUNT(*) AS 'cantidad' FROM cliente WHERE CLIENTE_ID='".$_REQUEST['idCliente']."';";
             $result = $conn->query($sql);

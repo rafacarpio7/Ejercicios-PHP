@@ -43,18 +43,15 @@ include_once "CRUD.php";
     </form>
 
     <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $sql="";
+
     $idClienteGuardado = $_REQUEST['idCliente'];
     if (isset($_REQUEST['btnModificar'])) {
         try {
-            $conn = new PDO("mysql:host=$servername;dbname=pufosa;charset=utf8",$username,$password);
+            include_once "conexion.php";
             //En este apartado comprobamos lo mismo que hemos comprobado a la hora de insertar ya que
             // es necesario que ciertos campos que son foreign key existan en la propia base de datos
 
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+           
             
                 $sql = "SELECT COUNT(empleado_ID) AS 'cantidad' FROM empleados WHERE empleado_ID='".$_REQUEST['vendedorID']."';";
                 $result = $conn->query($sql);
@@ -70,8 +67,6 @@ include_once "CRUD.php";
                     fwrite($log,"UPDATE;".$_SESSION['sesion'].";$DateAndTime\n");
                     fclose($log);
                 }else{
-                    $conn = new PDO("mysql:host=$servername;dbname=pufosa;charset=utf8",$username,$password);
-                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
                     $sql = "UPDATE CLIENTE SET CLIENTE_ID=:cliId,nombre=:nom,Direccion=:dir,Ciudad=:ciud,
                     Estado=:estad,CodigoPostal=:cp,CodigoDeArea=:cda,Telefono=:tlf,Vendedor_ID=:idVend,Limite_De_Credito=:limCred,Comentarios=:comen WHERE CLIENTE_ID=:clienteIDGuardada;";

@@ -23,18 +23,10 @@ include_once "CRUD.php";
     </form>
 
 <?php
-    $tblDatos = null;
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $sql="";
-
     if (isset($_REQUEST['btnAñadir'])) {
+        include_once "conexion.php";
         try {
-            $conn = new PDO("mysql:host=$servername;dbname=pufosa;charset=utf8",$username,$password);
 
-
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "SELECT COUNT(*) AS 'cantidad' FROM ubicacion WHERE Ubicacion_ID='".$_REQUEST['idUbicacion']."';";
             $result = $conn->query($sql);
             $num = $result->fetch();

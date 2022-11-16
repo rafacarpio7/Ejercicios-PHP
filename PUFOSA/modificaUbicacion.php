@@ -25,15 +25,10 @@ include_once "CRUD.php";
     </form>
 
     <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $sql="";
     $idUbicacionGuardado = $_REQUEST['ubicacionId'];
     if (isset($_REQUEST['btnModificar'])) {
         try {
-            $conn = new PDO("mysql:host=$servername;dbname=pufosa;charset=utf8",$username,$password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            include_once "conexion.php";
             $sql = "UPDATE ubicacion SET Ubicacion_ID=:ubiID,GrupoRegional=:grupRegi WHERE Ubicacion_ID=:UbicacionIDGuardada;";
 
             $stmt = $conn->prepare($sql);

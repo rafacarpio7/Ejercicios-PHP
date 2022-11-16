@@ -25,15 +25,10 @@
         </form>
 
         <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $sql="";
         $idTrabajoGuardado = $_REQUEST['trabajoId'];
         if (isset($_REQUEST['btnModificar'])) {
             try {
-                $conn = new PDO("mysql:host=$servername;dbname=pufosa;charset=utf8",$username,$password);
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                include_once "conexion.php";
                 $sql = "UPDATE trabajos SET Trabajo_ID=:trabajID,Funcion=:fun WHERE Trabajo_ID=:trabajoIDGuardada;";
 
                 $stmt = $conn->prepare($sql);

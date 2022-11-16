@@ -2,14 +2,10 @@
 <?php
 session_start();
 if (isset($_REQUEST['btnBorrar'])) {
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
+    include_once "conexion.php";
 
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=pufosa;charset=utf8",
-        $username,$password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
         $sql = "SELECT CLIENTE_ID FROM cliente WHERE cliente_id=:idCliente;";
         $stmt = $conn->prepare($sql);
         // establece el parametro idCliente como el parametro que obtenemos en el formulario como hidden

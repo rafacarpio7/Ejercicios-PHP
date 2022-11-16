@@ -3,14 +3,8 @@
 session_start();
 $error="";
 if (isset($_REQUEST['btnBorrar'])) {
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-
+    include_once "conexion.php";
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=pufosa;charset=utf8",
-        $username,$password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "SELECT departamento_ID FROM departamento WHERE departamento_ID=:idDepartamento;";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':idDepartamento', $_REQUEST['codDepartamento']);

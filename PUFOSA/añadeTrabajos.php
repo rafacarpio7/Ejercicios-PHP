@@ -23,18 +23,11 @@ include_once "CRUD.php";
     </form>
 
 <?php
-    $tblDatos = null;
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $sql="";
+
+include_once "conexion.php";
 
     if (isset($_REQUEST['btnAñadir'])) {
         try {
-            $conn = new PDO("mysql:host=$servername;dbname=pufosa;charset=utf8",$username,$password);
-
-
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "SELECT COUNT(*) AS 'cantidad' FROM trabajos WHERE Trabajo_ID='".$_REQUEST['idTrabajo']."';";
             $result = $conn->query($sql);
             $num = $result->fetch();
