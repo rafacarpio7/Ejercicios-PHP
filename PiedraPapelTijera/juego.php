@@ -22,7 +22,7 @@
         <input type="radio" name="jugada" value="TIJERA"><br>
         
         <input type="submit" name="btnJugar" value="JUEGA">
-        <input type="hidden" name="intentos" value="<?=$intentos?? ''?>">
+        <input type="hidden" name="intentos" value="<?=$intentos?? 0?>">
     </form>
 
     <?php
@@ -61,8 +61,13 @@
                     echo "EMPATEEEEEEEE";
                 }
                 break;
+            default:
+                $_REQUEST['intentos']++;
+            break;
             
         }
+
+        echo $intentos;
 
         
 
