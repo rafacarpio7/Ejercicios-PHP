@@ -10,6 +10,22 @@
 <?php
 
     if (isset($_REQUEST['btnJugar'])) {
+        if (empty($_REQUEST['intentos'])) {
+            $intentos=1;
+        }else {
+            $intentos=$_REQUEST['intentos']+1;
+        }
+
+        if (empty($_REQUEST['ganaUsuario']) && empty($_REQUEST['ganaMaquina'])) {
+            $ganaUsuario= 0;
+            $ganaMaquina= 0;
+        }else {
+            $ganaUsuario =$_REQUEST['ganaUsuario'];
+            $ganaMaquina= $_REQUEST['ganaMaquina'];
+        }
+        
+
+        if ($intentos!=5) {
 
         $arrayPosiblesJugadas = array('PIEDRA','PAPEL','TIJERA');
         $jugadaMaquina = $arrayPosiblesJugadas[rand(0,2)];
@@ -117,16 +133,19 @@
                 
         }
 
-        if (empty($_REQUEST['intentos'])) {
-            $intentos=1;
-        }else {
-            $intentos=$_REQUEST['intentos']+1;
-        }
+        
 
         echo "<br>Recuento maquina ".$ganaMaquina;
         echo "<br>Recuento user ".$ganaUsuario;
         echo "<br>Recuento intentos ".$intentos;
-        
+        }else {
+            echo "Se termino wey";
+          
+            echo "<br>Recuento maquina ".$ganaMaquina;
+            echo "<br>Recuento user ".$ganaUsuario;
+            echo "<br>Recuento intentos ".$intentos;
+        }
+
 
     }
     ?>

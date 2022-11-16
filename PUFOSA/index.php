@@ -25,6 +25,9 @@
 
 
     <?php
+    if (session_start()) {
+        session_destroy();
+    }
     if (isset($_REQUEST['btnLogin'])) {
        //Inicio de sesion para activar el $_SESSION y establecimiento de contraseña para todos los users
         session_start();
