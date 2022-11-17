@@ -134,13 +134,13 @@
     <form action="" method="post">
         <br>
         <label for="piedra">PIEDRA</label>
-        <input type="radio" name="jugada" value="PIEDRA">
+        <input type="radio" name="jugada" value="PIEDRA" required>
         
         <label for="pepel">PAPEL</label>
-        <input type="radio" name="jugada" value="PAPEL">
+        <input type="radio" name="jugada" value="PAPEL" required>
         
         <label for="tijera">TIJERA</label>
-        <input type="radio" name="jugada" value="TIJERA"><br>
+        <input type="radio" name="jugada" value="TIJERA" required><br>
         
         <input type="hidden" name="intentos" value="<?=$intentos??''?>">
         <input type="hidden" name="ganaMaquina" value="<?=$ganaMaquina??''?>">
