@@ -21,6 +21,8 @@ class Alumno{
     {
         $this->nombre=$nombreNuevo;
     }
+
+    
 }
 
 
