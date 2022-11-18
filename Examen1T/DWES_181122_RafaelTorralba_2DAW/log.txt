@@ -1,0 +1,11 @@
+SELECT count(*) as cantidad FROM alumnos;
+SELECT count(*) as cantidad FROM alumnos;
+SELECT count(*) as cantidad FROM alumnos;
+SELECT count(*) as cantidad FROM alumnos;
+SELECT count(*) as cantidad FROM alumnos;
+SELECT count(*) as cantidad FROM alumnos;
+SELECT count(*) as cantidad FROM alumnos;
+SELECT count(*) as cantidad FROM alumnos;
+SELECT count(*) as cantidad FROM alumnos;
+SELECT count(*) as cantidad FROM alumnos;
+SELECT count(*) as cantidad FROM alumnos;
