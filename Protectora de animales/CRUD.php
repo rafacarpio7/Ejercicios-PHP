@@ -7,15 +7,24 @@ abstract class CRUD extends Conexion{
     public function __contruct($tabla,$conexion)
     {
         $this->tabla=$tabla;
-        $this->conexion=$this->nuevaConexion();
+        $this->conexion=new Conexion();
     }
 
     public function obtieneTodos()
     {
         $statement = $this->conexion->prepare("SELECT * FROM $this->tabla ");
-        $statement->execute();
+        if ($statement->execute()) {
 
-        $registros = $statement->fetchAll(PDO::FETCH_OBJ);
+            while ($registros = $statement->fetch(PDO::FETCH_OBJ)) {
+                echo $registros[''];
+            }
+            
+
+        }else {
+            
+        }
+
+        
 
 
 
