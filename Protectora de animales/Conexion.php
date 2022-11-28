@@ -1,17 +1,11 @@
 <?php
 class Conexion{
-    private $usuario;
-    private $contraseña;
-    private $nombreServidor;
-    private $nombreBBDD;
+    private $usuario="root";
+    private $contraseña="";
+    private $nombreServidor="localhost";
+    private $nombreBBDD="protectora_animales";
 
-    public function __construct()
-    {
-        $this->usuario="root";
-        $this->contraseña="";
-        $this->nombreServidor="localhost";
-        $this->nombreBBDD="protectora_animales";
-    }
+    
 
     protected function nuevaConexion(){
         try {
