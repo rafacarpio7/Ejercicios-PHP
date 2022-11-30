@@ -27,17 +27,26 @@
 
 
     print_r($usuario); */
-
+    /*
     $usuario = new Usuario();
     while ($registros = $usuario->obtieneTodos()) {
         echo print_r($registros);
     }
-   
+    */
+
+    $usuario = new Usuario();
+    $prueba = $usuario->obtieneTodos();
+    echo "<pre>";
+    print_r($prueba);
+    echo "</pre>";
+
+
     
-    
-    /*foreach ($usuario->obtieneTodos() as $row){
-        echo $row;
-    }*/
+    foreach ($prueba as $row){
+        echo "<pre>";
+        print_r($row->nombre);
+        echo "</pre>";
+    }
 
 
     ?>

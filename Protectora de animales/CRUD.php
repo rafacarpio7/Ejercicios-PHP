@@ -13,7 +13,7 @@ abstract class CRUD extends Conexion{
     public function obtieneTodos(){
         $statement = $this->conexion->prepare("SELECT * FROM $this->tabla ");
         if ($statement->execute()) {
-            return $statement->fetch(PDO::FETCH_OBJ);
+            return $statement->fetchAll(PDO::FETCH_OBJ);
         }
     }
 
