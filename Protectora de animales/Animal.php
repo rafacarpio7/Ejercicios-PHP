@@ -28,18 +28,34 @@ class Animal extends CRUD
 
     public function crear()
     {
-
-        $sql = ("INSERT INTO " .self::$TABLA." VALUES ($this->id,$this->nombre,$this->raza,$this->genero,$this->color,$this->edad)");
-        $this->conexion->exec($sql);
-
+        $DateAndTime = date('Y-m-d h:i:s a', time());
+        $sql = ("INSERT INTO " .self::$TABLA." VALUES (:id,:nombre,:raza,:genero,:color,:edad,:fechaCreacion,:fechaModificacion)");
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bindParam(':id', $this->id);
+        $stmt->bindParam(':nombre', $this->nombre);
+        $stmt->bindParam(':raza', $this->raza);
+        $stmt->bindParam(':genero', $this->genero);
+        $stmt->bindParam(':color', $this->color);
+        $stmt->bindParam(':edad', $this->edad);
+        $stmt->bindParam(':fechaCreacion', $DateAndTime);
+        $stmt->bindParam(':fechaModificacion', $DateAndTime);
+        $stmt->execute();
     }
 
     public function actualizar()
     {
-
-        $sql = "UPDATE ".self::$TABLA." SET id=$this->id,nombre=$this->nombre,raza=$this->raza,genero=$this->genero,color=$this->color,edad=$this->edad;";
+        $DateAndTime = date('Y-m-d h:i:s a', time());
+        $sql = "UPDATE ".self::$TABLA." SET id=:id,nombre=:nombre,raza=:raza,genero=:genero,color=:color,edad=:edad,updated_at=:actualizado;";
         $this->conexion->exec($sql);
-        
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bindParam(':id', $this->id);
+        $stmt->bindParam(':nombre', $this->nombre);
+        $stmt->bindParam(':raza', $this->raza);
+        $stmt->bindParam(':genero', $this->genero);
+        $stmt->bindParam(':color', $this->color);
+        $stmt->bindParam(':edad', $this->edad);
+        $stmt->bindParam(':actualizado', $DateAndTime);
+        $stmt->execute();
     }
 
 }

@@ -24,18 +24,30 @@ class Adopcion extends CRUD
 
     public function crear()
     {
-
-        $sql = ("INSERT INTO " .self::$TABLA." VALUES ($this->id,$this->idAnimal,$this->fecha,$this->razon)");
-        $this->conexion->exec($sql);
-
+        $DateAndTime = date('Y-m-d h:i:s a', time());
+        $sql = ("INSERT INTO " .self::$TABLA." VALUES (:id,:idAnimal,:fecha,:razon,:creado,actualizado)");
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bindParam(':id', $this->id);
+        $stmt->bindParam(':idAnimal', $this->idAnimal);
+        $stmt->bindParam(':fecha', $this->fecha);
+        $stmt->bindParam(':razon', $this->razon);
+        $stmt->bindParam(':creado', $DateAndTime);
+        $stmt->bindParam(':actualizado', $DateAndTime);
+        $stmt->execute();
     }
 
     public function actualizar()
     {
-
-        $sql = "UPDATE ".self::$TABLA." SET id=$this->id,idAnimal=$this->idAnimal,fecha=$this->fecha,razon=$this->razon;";
+        $DateAndTime = date('Y-m-d h:i:s a', time());
+        $sql = "UPDATE ".self::$TABLA." SET id=:id,idAnimal=:idAnimal,fecha=:fecha,razon=:razon,updated_at=:actualizado;";
         $this->conexion->exec($sql);
-        
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bindParam(':id', $this->id);
+        $stmt->bindParam(':idAnimal', $this->idAnimal);
+        $stmt->bindParam(':fecha', $this->fecha);
+        $stmt->bindParam(':razon', $this->razon);
+        $stmt->bindParam(':actualizado', $DateAndTime);
+        $stmt->execute();
     }
 }
 

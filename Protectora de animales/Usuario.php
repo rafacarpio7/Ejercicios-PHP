@@ -47,9 +47,17 @@ class Usuario extends CRUD {
 
     public function actualizar()
     {
-        
-        $sql = "UPDATE ".self::$TABLA." SET id=$this->id,nombre=$this->nombre,apellido=$this->apellido,sexo=$this->sexo,direccion=$this->direccion,telefono=$this->telefono;";
-        $this->conexion->exec($sql);
+        $DateAndTime = date('Y-m-d h:i:s a', time());
+        $sql = "UPDATE ".self::$TABLA." SET id=:id,nombre=:nombre,apellido=:apellido,sexo=:sexo,direccion=:direccion,telefono=:telefono,updated_at=:actualizado;";
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bindParam(':id', $this->id);
+        $stmt->bindParam(':nombre', $this->nombre);
+        $stmt->bindParam(':apellido', $this->apellido);
+        $stmt->bindParam(':sexo', $this->sexo);
+        $stmt->bindParam(':direccion', $this->direccion);
+        $stmt->bindParam(':telefono', $this->telefono);
+        $stmt->bindParam(':actualizado', $DateAndTime);
+        $stmt->execute();
         
     }
 
