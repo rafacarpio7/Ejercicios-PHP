@@ -13,63 +13,6 @@
     include_once "Usuario.php";
     include_once "Animal.php";
     include_once "Adopcion.php";
-    
-
-
-
-    /*
-    $usuario = new Usuario();
-
-    $usuario->__set("id","16");
-    $usuario->__set("nombre","Rafa");
-    $usuario->__set("apellido","Torralba");
-    $usuario->__set("sexo","Masculino");
-    $usuario->__set("direccion","calle mi casa");
-    $usuario->__set("telefono","678574645");
-
-    $usuario->crear();
-    
-
-
-    print_r($usuario); */
-    /*
-    $usuario = new Usuario();
-    while ($registros = $usuario->obtieneTodos()) {
-        echo print_r($registros);
-    }
-    */
-
-    $usuario = new Usuario();
-    
-    $prueba = $usuario->obtieneTodos();
-    $usuarioCopia = $prueba[0];
-    echo "<pre>";
-    print_r($prueba);
-    echo "</pre>";
-    echo "<pre>";
-    print_r($usuarioCopia);
-    echo "</pre>";
-
-    $arraypaco = $prueba[0];
-
-    echo "<pre>";
-    print_r($arraypaco);
-    echo "</pre>";
-
-
-
-    foreach ($arraypaco as $key => $value ) {
-        echo $key;
-
-
-    }
-
-    
-    foreach ($prueba as $row){
-        echo "<pre>";
-        print_r($row->nombre);
-        echo "</pre>";
-    }
 
     switch ($_REQUEST['btnTabla']) {
         case 'ANIMALES':
@@ -109,7 +52,23 @@
             echo "</table>";
             break;
         case 'USUARIOS':
-            # code...
+            $usuarios = new Usuario();
+            $registroUsuarios = $usuarios->obtieneTodos();
+            $arraykeys = $registroUsuarios[0];
+            echo "<table><tr>";
+            foreach ($arraykeys as $key => $value ) {
+                echo "<th>$key</th>";
+            }
+            echo "</tr>";
+            foreach ($registroUsuarios as $key => $value) {
+                echo "<tr>";
+                foreach($value as $clave => $valor){
+                        echo "<td>".$valor ."</td>";
+                }
+                echo "</tr>";
+            }
+            echo "</table>";
+            break;
             break;
         default:
             # code...
