@@ -8,7 +8,7 @@ class Animal extends CRUD
     private $color;
     private $edad;
     private $conexion;
-    private static $TABLA="animales";
+    private static $TABLA="animal";
 
 
     public function __construct()

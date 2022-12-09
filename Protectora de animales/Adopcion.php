@@ -6,7 +6,7 @@ class Adopcion extends CRUD
     private $fecha;
     private $razon ;
     private $conexion ;
-    private static $TABLA="adopciones";
+    private static $TABLA="adopcion";
 
     public function __construct(){
         parent::__contruct(self::$TABLA);
