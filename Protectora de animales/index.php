@@ -130,19 +130,29 @@ input {
         case 'USUARIOS':
             $usuarios = new Usuario();
             $registroUsuarios = $usuarios->obtieneTodos();
+
+            
+            
             $arraykeys = $registroUsuarios[0];
             echo "<table><tr>";
             foreach ($arraykeys as $key => $value ) {
                 echo "<th>".strtoupper($key)."</th>";
+                
             }
             echo "</tr>";
             foreach ($registroUsuarios as $key => $value) {
+                
                 echo "<tr>";
                 foreach($value as $clave => $valor){
                         echo "<td>".$valor ."</td>";
                         
                 }
-                echo "<td><form><input type='submit' name='btnBorrarUsuario' value='BORRAR'></form></td>";
+                echo "<td>
+                        <form>
+                            <input type='submit' name='btnBorrarUsuario' value='BORRAR'>
+                            <input type='hidden' name='idBorrar' value='".$registroUsuarios[$key]->id."'>
+                        </form>
+                      </td>";
                 echo "</tr>";
             }
             echo "</table>";
@@ -160,6 +170,7 @@ input {
         <input type="submit" name="btnTabla" value="ANIMALES">
         <input type="submit" name="btnTabla" value="ADOPCIONES">
         <input type="submit" name="btnTabla" value="USUARIOS">
+        
     </form>
 
     <?php
