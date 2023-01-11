@@ -228,9 +228,7 @@ legend {
                 <td>".$registro['APELLIDOS']."</td>
                 <td>".$registro['TELEFONO']."</td>
                 <td>".$registro['CORREO']."</td>
-
             </tr>";
-
     } 
 
     echo "</table>";
@@ -243,7 +241,7 @@ legend {
      */
     echo $numPaginas;
     for ($i=1; $i <=$numPaginas ; $i++) { 
-        echo "<a href=".header('Location: paginacion.php?pagina=$paginaActual').">$i</a>";
+        echo "<a href=".header('Location: paginacion.php?pagina=$paginaActual').">".$i."</a>";
     }
 
     ?>

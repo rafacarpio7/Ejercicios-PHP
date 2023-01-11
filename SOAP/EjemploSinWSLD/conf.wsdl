@@ -1,0 +1,59 @@
+<definitions name="Calculadora" targetNamespace="http://localhost:8000/serverSOAP.php" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://localhost:8000/serverSOAP.php" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+   <types>
+      <xsd:schema targetNamespace="http://localhost:8000/serverSOAP.php"/>
+   </types>
+   <portType name="CalculadoraPort">
+      <operation name="suma">
+         <documentation>suma</documentation>
+         <input message="tns:sumaIn"/>
+         <output message="tns:sumaOut"/>
+      </operation>
+      <operation name="resta">
+         <documentation>resta</documentation>
+         <input message="tns:restaIn"/>
+         <output message="tns:restaOut"/>
+      </operation>
+   </portType>
+   <binding name="CalculadoraBinding" type="tns:CalculadoraPort">
+      <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <operation name="suma">
+         <soap:operation soapAction="http://localhost:8000/serverSOAP.php#suma"/>
+         <input>
+            <soap:body use="literal" namespace="http://localhost:8000/serverSOAP.php"/>
+         </input>
+         <output>
+            <soap:body use="literal" namespace="http://localhost:8000/serverSOAP.php"/>
+         </output>
+      </operation>
+
+      <operation name="resta">
+         <soap:operation soapAction="http://localhost:8000/serverSOAP.php#resta"/>
+         <input>
+            <soap:body use="literal" namespace="http://localhost:8000/serverSOAP.php"/>
+         </input>
+         <output>
+            <soap:body use="literal" namespace="http://localhost:8000/serverSOAP.php"/>
+         </output>
+      </operation>
+   </binding>
+   <service name="CalculadoraService">
+      <port name="CalculadoraPort" binding="tns:CalculadoraBinding">
+         <soap:address location="http://localhost:8000/serverSOAP.php"/>
+      </port>
+   </service>
+   <message name="sumaIn">
+      <part name="n1" type="xsd:float"/>
+      <part name="n2" type="xsd:float"/>
+   </message>
+   <message name="sumaOut">
+      <part name="returnSuma" type="xsd:float"/>
+   </message>
+   <message name="restaIn">
+      <part name="n1" type="xsd:float"/>
+      <part name="n2" type="xsd:float"/>
+   </message>
+   <message name="restaOut">
+      <part name="returnResta" type="xsd:float"/>
+   </message>
+</definitions>
