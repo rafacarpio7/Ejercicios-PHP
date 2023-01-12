@@ -1,7 +1,7 @@
 <?php
 
-$opciones = array('uri'=>'https://localhost/Ejercicios-PHP/SOAP/EjemploSinWSLD',
-                    'location'=>'https://localhost/Ejercicios-PHP/SOAP/EjemploSinWSLD/serverSOAP.php');
+$opciones = array('uri'=>'http://localhost/Ejercicios-PHP/SOAP/EjemploSinWSLD',
+                    'location'=>'http://localhost/Ejercicios-PHP/SOAP/EjemploSinWSLD/serverSOAP.php');
 
 try {
     $cliente = new SoapClient(null,$opciones);
