@@ -1,9 +1,9 @@
 <?php
 include('Calculadora.php');
 
-$opciones = array('uri'=>'http://localhost/Ejercicios-PHP/SOAP/EjemploSinWSLD');
 
-$servidor = new SoapServer(NULL,$opciones);
+
+$servidor = new SoapServer('http://localhost/Ejercicios-PHP/SOAP/EjemploSinWSLD/conf.wsdl');
 
 $servidor->setClass('Calculadora');
 
