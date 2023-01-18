@@ -48,8 +48,7 @@ try {
 try {
     $conexion = new PDO("mysql:host=$servername;dbname=mi_restaurante_favorito;charset=utf8",$username,$password);
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "";
-
+    $sql = "INSERT INTO platos(nombre_plato,precio,categoria) VALUES ('croquetas',12,'normal')";
     $conexion->exec($sql);
 
 } catch (PDOException $e) {
@@ -75,8 +74,8 @@ try {
 <body>
     <form action="" method="post">
         <h1>Vamos a Labural</h1>
-        Camarero : <input type="text" name="camareroId" id="camarero"><br>
-        Contraseña : <input type="password" name="contraseña" id="contraseña" pattern="\d{4}" ><br>
+        Camarero : <input type="text" name="camareroId" id="camarero" required><br>
+        Contraseña : <input type="password" name="contraseña" id="contraseña" required><br>
         <input type="submit" name="btnLogin" value="Entrar">
     </form>
 </body>
