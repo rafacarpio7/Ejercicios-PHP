@@ -32,7 +32,8 @@ try {
 try {
     $conexion = new PDO("mysql:host=$servername;dbname=mi_restaurante_favorito;charset=utf8",$username,$password);
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "CREATE TABLE IF NOT EXISTS platos( "
+    $sql = "DROP TABLE platos;"
+           . "CREATE TABLE IF NOT EXISTS platos( "
             . "id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,"
            ." nombre_plato VARCHAR(30) NOT NULL,"
            ." precio INT(9) NOT NULL, "
@@ -54,11 +55,6 @@ try {
 } catch (PDOException $e) {
     echo $sql . "<br>" . $e->getMessage();
 }
-
-
-
-
-
 
 
 ?>
