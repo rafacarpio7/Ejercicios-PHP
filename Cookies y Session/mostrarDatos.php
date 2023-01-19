@@ -50,7 +50,7 @@ try {
         if (isset($_REQUEST['btnAñadir'])) {
             $_SESSION['producto']=array('nombre'=>$_REQUEST['platos']);
         }
-
+        echo $_REQUEST['platos']."<br>";
         print_r($_SESSION);
     ?>
 </body>
