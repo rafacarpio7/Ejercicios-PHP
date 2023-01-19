@@ -37,6 +37,7 @@ try {
         <?php
             foreach ($registros as $key ) {
                 echo "Plato de ".$key['nombre_plato']. " :".$key['precio']."€"."<input type='checkbox' name='platos' id='".$key['id']."' value='".$key['nombre_plato']."' >" ;
+                echo "<input type='hidden' name='idProducto' value='".$key['id']."'>";
             }
         ?>
         <br>
@@ -44,11 +45,12 @@ try {
         <input type="submit" name="btnEliminar" value="Eliminar">
         <input type="submit" name="btnBorrarTodo" value="Borrar Todo">
         <input type="submit" name="btnCerrarCuenta" value="Cerrar cuenta">
+        
     </form>
 
     <?php
         if (isset($_REQUEST['btnAñadir'])) {
-            $_SESSION['producto']=$_REQUEST['platos'];
+            $_SESSION[$_REQUEST['idProducto']]=$_REQUEST['platos'];
         }
         echo $_REQUEST['platos']."<br>";
         print_r($_SESSION);
