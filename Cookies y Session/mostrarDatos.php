@@ -48,10 +48,24 @@ try {
 
     <?php
         if (isset($_REQUEST['btnAñadir'])) {
-            $_SESSION['producto']=array('nombre'=>$_REQUEST['platos']);
+            $_SESSION['producto']=$_REQUEST['platos'];
         }
         echo $_REQUEST['platos']."<br>";
         print_r($_SESSION);
+
+        $arrayCuenta =array_count_values($_SESSION);
+        print_r($arrayCuenta);
     ?>
+
+    <div>
+        <ul>
+            <?php
+                foreach ($arrayCuenta as $key=>$value) {
+                    echo "<li>". $key ." : " . $value.  "</li>";
+                }
+            ?>
+        </ul>   
+
+    </div>
 </body>
 </html>
