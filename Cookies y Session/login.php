@@ -49,7 +49,7 @@ try {
 try {
     $conexion = new PDO("mysql:host=$servername;dbname=mi_restaurante_favorito;charset=utf8",$username,$password);
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "INSERT INTO platos(nombre_plato,precio,categoria) VALUES ('croquetas',12,'normal')";
+    $sql = "INSERT INTO platos(nombre_plato,precio,categoria) VALUES ('croquetas',12,'normal'),('flamenquines',10,'normal'),('lentejas',10,'normal'),('sopa',10,'normal'),('salmorejo',10,'normal')";
     $conexion->exec($sql);
 
 } catch (PDOException $e) {
