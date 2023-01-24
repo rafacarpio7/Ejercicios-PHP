@@ -18,7 +18,7 @@
     }
     
 
-    $statement = $conn->prepare("SELECT * FROM empleados ");
+    $statement = $conn->prepare("SELECT * FROM empleados");
 
     $statement->execute();
 

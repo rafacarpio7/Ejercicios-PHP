@@ -32,4 +32,16 @@ function mostrarTabla($registros)
         echo "</table>";
 }
 
+
+
+function formFiltros($registros)
+{
+    echo "<form action=''>";
+    
+    
+    
+    echo "";
+    echo    "</form>";
+}
+
 ?>

@@ -160,4 +160,25 @@ legend {
 }
 
 
+#radio{
+    width: 20px;
+    
+}
+
+#filtros{
+    width: 800px;
+    background: #b6e2d3;
+    padding-left: 20px;
+    padding-top: 5px;
+    margin: auto;
+    margin-top: 75px;
+    border-radius: 4px;
+
+}
+
+#checkbox{
+    width: 20px;
+}
+
+
    
