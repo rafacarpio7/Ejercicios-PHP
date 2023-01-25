@@ -90,6 +90,39 @@ class Viviendas extends CRUD
         }
     }
 
+    public function filtroViviendas()
+    {
+        $sql = "SELECT * FROM ".self::$TABLA ."WHERE tipo=:tipoFiltro 
+        AND zona=:zonaFiltro AND direccion=:direccionFiltro AND ndormitorios=:ndormitoriosFiltro
+        AND precio=:precioFiltro AND tamano=:tamanoFiltro AND extras=:extrasFiltro";
+        $stmt = $this->conexion->prepare($sql);
+        if (empty($_REQUEST['selectTipo'])) {
+            $stmt->bindParam(':tipoFiltro', "'%'");
+        }else {
+            $stmt->bindParam(':tipoFiltro', $_REQUEST['selectTipo']);
+        }
+
+        if (empty($_REQUEST[''])) {
+            $stmt->bindParam(':zonaFiltro', "'%'");
+        } else {
+            $stmt->bindParam(':zonaFiltro', $_REQUEST['idLogin']);
+        }
+        
+
+        $stmt->bindParam(':tipoFiltro', $_REQUEST['idLogin']);
+        $stmt->bindParam(':zonaFiltro', $_REQUEST['idLogin']);
+        $stmt->bindParam(':direccionFiltro', $_REQUEST['idLogin']);
+        $stmt->bindParam(':ndormitoriosFiltro', $_REQUEST['idLogin']);
+        $stmt->bindParam(':precioFiltro', $_REQUEST['idLogin']);
+        $stmt->bindParam(':tamanoFiltro', $_REQUEST['idLogin']);
+        $stmt->bindParam(':extrasFiltro', $_REQUEST['idLogin']);
+
+        $stmt->execute();
+        $registros = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $registros;
+    }
+
 }
 
 

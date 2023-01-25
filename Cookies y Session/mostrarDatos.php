@@ -83,6 +83,18 @@ try {
         }
     }
 
+    if (isset($_REQUEST['btnEliminar'])) {
+        foreach ($_REQUEST['platos'] as $key=>$value ) {
+            if (empty($_SESSION) || !array_key_exists($_REQUEST['platos'][$key],$_SESSION)) {
+                
+            }else{
+                $cantidadPlatos= $_SESSION[$value]-1;
+                $_SESSION[$_REQUEST['platos'][$key]]=$cantidadPlatos;
+            }
+        }
+    }
+
+
 
     
     print_r($_SESSION);

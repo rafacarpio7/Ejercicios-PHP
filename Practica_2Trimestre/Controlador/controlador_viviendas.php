@@ -7,5 +7,7 @@ $registrosViviendas = $instanciaViviendas->obtieneTodos();
 
 $arraykeys= $registrosViviendas[0];
 
+$registrosViviendasFiltro = $instanciaViviendas->consultaFiltroTipoZona();
+
 
 ?>

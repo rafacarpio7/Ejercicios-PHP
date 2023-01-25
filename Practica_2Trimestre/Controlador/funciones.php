@@ -36,10 +36,45 @@ function mostrarTabla($registros)
 
 function formFiltros($registros)
 {
+    $arraykeys= $registros[0];
+    
     echo "<form action=''>";
+    foreach ($registros as $key => $value) {
+        
+
+        foreach ($value as $clave => $valor) {
+            print_r($value);
+            
+            if ($clave='tipo') {
+                
+            } else {
+                # code...
+            }
+            
+            //echo $clave;
+           // echo $value->zona;
+        }
+    }
     
-    
-    
+    echo "<label for='dormitorios'>Numero de dormitorios : </label>
+    <input type='radio' id='radio' name='dormitorios' value='1'><span>1</span>
+    <input type='radio' id='radio' name='dormitorios' value='2'>2
+    <input type='radio' id='radio' name='dormitorios' value='3'>3
+    <input type='radio' id='radio' name='dormitorios' value='4'>4
+    <input type='radio' id='radio' name='dormitorios' value='5'>5 o mas <br>
+
+    <label for='precios'>Precio : </label>
+    <input type='radio' id='radio' name='precio' value='opcion1'>-100.000
+    <input type='radio' id='radio' name='precio' value='opcion2'>100.000-200.000
+    <input type='radio' id='radio' name='precio' value='opcion3'>200.000-300.000
+    <input type='radio' id='radio' name='precio' value='opcion4'>+300.000
+    <br>
+    <label for='extras'>Extras : </label>
+        <input type='checkbox' id='checkbox' name='extras[]' value='Piscina'>Piscina 
+        <input type='checkbox' id='checkbox' name='extras[] value='Jardin'> Jardin
+        <input type='checkbox' id='checkbox' name='extras[] value='Garaje'> Garaje
+    <br>
+    <input type='submit' name='btnBuscarViviendas' value='Buscar Viviendas'>";
     echo "";
     echo    "</form>";
 }
