@@ -92,9 +92,7 @@ class Viviendas extends CRUD
 
     public function filtroViviendas()
     {
-        $sql = "SELECT * FROM ".self::$TABLA ."WHERE tipo LIKE :tipoFiltro 
-        AND zona LIKE :zonaFiltro AND ndormitorios LIKE :ndormitoriosFiltro
-        AND precio LIKE :precioFiltro AND extras LIKE :extrasFiltro";
+        $sql = "SELECT * FROM ".self::$TABLA ." WHERE tipo LIKE :tipoFiltro AND zona LIKE :zonaFiltro AND ndormitorios LIKE :ndormitoriosFiltro AND precio BETWEEN :precioFiltro1 AND :precioFiltro2 AND FIND_IN_SET(':extrasFiltro',extras)>0";
         $stmt = $this->conexion->prepare($sql);
         
         if (isset($_REQUEST['selectTipo'])) {
@@ -110,8 +108,6 @@ class Viviendas extends CRUD
         }
         
         
-        
-
         if (isset($_REQUEST['dormitorios'])) {
             $stmt->bindParam(':ndormitoriosFiltro', $_REQUEST['dormitorios']);
         } else {
@@ -119,20 +115,39 @@ class Viviendas extends CRUD
         }
 
         if (isset($_REQUEST['precio'])) {
-            $stmt->bindValue(':precioFiltro', "%");
+            switch ($_REQUEST['precio']) {
+                case '1':
+                    $stmt->bindValue(':precioFiltro1', 0);
+                    $stmt->bindValue(':precioFiltro2', 100000);
+                    break;
+                case '2':
+                    $stmt->bindValue(':precioFiltro1', 100000);
+                    $stmt->bindValue(':precioFiltro2', 200000);
+                    break;
+                case '3':
+                    $stmt->bindValue(':precioFiltro1', 200000);
+                    $stmt->bindValue(':precioFiltro2', 300000);
+                    break;
+                case '4':
+                    $stmt->bindValue(':precioFiltro1', 300000);
+                    $stmt->bindValue(':precioFiltro2', 1000000000);
+                    break;
+            }
         }else {
-            $stmt->bindValue(':precioFiltro', "%");
+            $stmt->bindValue(':precioFiltro1', 0);
+            $stmt->bindValue(':precioFiltro2', 1000000000);
         }
         
         if (isset($_REQUEST['extras'])) {
-            $stmt->bindValue(':extrasFiltro', "%");
+            $stmt->bindParam(':extrasFiltro', $_REQUEST['extras'][0]);
         } else {
             $stmt->bindValue(':extrasFiltro', "%");
         }
         
     
         $stmt->execute();
-        $registros = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        $registros = $stmt->fetchAll(PDO::FETCH_OBJ);
 
         return $registros;
     }

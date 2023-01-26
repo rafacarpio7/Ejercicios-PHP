@@ -42,10 +42,10 @@
         <input type="radio" id="radio" name="dormitorios" value="5">5 o mas <br>
 
           <label for="precios">Precio : </label>
-        <input type="radio" id="radio" name="precio" value="0 AND 100000">-100.000
-        <input type="radio" id="radio" name="precio" value="100000 AND 200000">100.000-200.000
-        <input type="radio" id="radio" name="precio" value="200000 AND 300000">200.000-300.000
-        <input type="radio" id="radio" name="precio" value="300000 AND SELECT MAX(precio)">+300.000
+        <input type="radio" id="radio" name="precio" value="1">-100.000
+        <input type="radio" id="radio" name="precio" value="2">100.000-200.000
+        <input type="radio" id="radio" name="precio" value="3">200.000-300.000
+        <input type="radio" id="radio" name="precio" value="4">+300.000
         <br>
         <label for="extras">Extras : </label>
             <input type="checkbox" id="checkbox" name="extras[]" value="Piscina">Piscina 
@@ -55,8 +55,10 @@
         <input type="submit" name="btnBuscarViviendas" value="Buscar Viviendas">
     </form>
 
-    <?php if (empty($_REQUEST)) {
-        echo empty($_REQUEST);} ?>
+    <?php mostrarTabla($registrosViviendasFiltro);
+       echo $_REQUEST['extras'][0]?>
+
+    
     
     
 
