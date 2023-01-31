@@ -92,7 +92,7 @@ class Viviendas extends CRUD
 
     public function filtroViviendas()
     {
-        $sql = "SELECT * FROM ".self::$TABLA ." WHERE tipo LIKE :tipoFiltro AND zona LIKE :zonaFiltro AND ndormitorios LIKE :ndormitoriosFiltro AND precio BETWEEN :precioFiltro1 AND :precioFiltro2 AND FIND_IN_SET(':extrasFiltro',extras)>0";
+        $sql = "SELECT * FROM ".self::$TABLA ." WHERE tipo LIKE :tipoFiltro AND zona LIKE :zonaFiltro AND ndormitorios LIKE :ndormitoriosFiltro AND precio BETWEEN :precioFiltro1 AND :precioFiltro2 "; // AND FIND_IN_SET(':extrasFiltro',extras)>0
         $stmt = $this->conexion->prepare($sql);
         
         if (isset($_REQUEST['selectTipo'])) {
@@ -138,11 +138,11 @@ class Viviendas extends CRUD
             $stmt->bindValue(':precioFiltro2', 1000000000);
         }
         
-        if (isset($_REQUEST['extras'])) {
-            $stmt->bindParam(':extrasFiltro', $_REQUEST['extras'][0]);
-        } else {
-            $stmt->bindValue(':extrasFiltro', "%");
-        }
+        // if (isset($_REQUEST['extras'])) {
+        //     $stmt->bindParam(':extrasFiltro', $_REQUEST['extras'][0]);
+        // } else {
+        //     $stmt->bindValue(':extrasFiltro', "%");
+        // }
         
     
         $stmt->execute();
