@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <h1>Buscar Viviendas</h1>
+    <?php require_once "../Controlador/controlador_CRUD.php";?>
+    <h2>Buscar Viviendas</h2>
     <form id="filtros" action="" method="post">
         <legend>Encuentra tu vivienda Perfecta</legend>
         Tipo de vivienda : <select name="selectTipo">
@@ -54,6 +55,7 @@
         <br>
         <input type="submit" name="btnBuscarViviendas" value="Buscar Viviendas">
     </form>
+    <br>
 
     <?php mostrarTabla($registrosViviendasFiltro);
        echo $_REQUEST['extras'][0]?>

@@ -68,6 +68,13 @@ h1{
     font-family: 'Roboto';
 }
 
+h2 {
+    text-align: center; 
+    padding-top: 15px; 
+    margin-top: 15px;
+    font-family: 'Roboto';
+}
+
 button {
     margin-left: 40px;
     padding: 9px 25px;
