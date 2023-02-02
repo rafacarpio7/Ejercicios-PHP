@@ -57,6 +57,8 @@ try {
 }
 
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -68,10 +70,10 @@ try {
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="mostrarDatos.php" method="post">
         <h1>Vamos a Labural</h1>
         Camarero : <input type="text" name="camareroId" id="camarero" required><br>
-        Contraseña : <input type="password" name="contraseña" id="contraseña" required><br>
+        Contraseña : <input type="password" name="contrasena" id="contrasena" required><br>
         <input type="submit" name="btnLogin" value="Entrar">
     </form>
 </body>
