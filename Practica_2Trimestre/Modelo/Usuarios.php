@@ -37,6 +37,15 @@ class Usuarios extends CRUD
         return $stmt->execute();
 
     }
+    
+    public function obtieneSinPass()
+    {
+        $statement = $this->conexion->prepare("SELECT id_usuario FROM ".self::$TABLA." ");
+        if ($statement->execute()) {
+            return $statement->fetchAll(PDO::FETCH_OBJ);
+        }
+
+    }
 
     public function login()
     {

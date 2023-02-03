@@ -63,7 +63,8 @@ header {
 }
 h1{
     text-align: center; 
-    padding-top: 25px; 
+    padding-top: 15px; 
+    padding-bottom: 25px;
     margin-top: 25px;
     font-family: 'Roboto';
 }
@@ -144,6 +145,16 @@ form {
 }
 
 input {
+    width: 150px;
+    padding: 7px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    border: 1px solid #49a09d;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+select{
     width: 150px;
     padding: 7px;
     border-radius: 4px;

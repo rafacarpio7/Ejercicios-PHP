@@ -34,11 +34,13 @@ class Viviendas extends CRUD
     {
         
         $this->tipo = $_REQUEST["tipo"];
-        $this->especie = $_REQUEST["especie"];
         $this->zona = $_REQUEST["zona"];
         $this->direccion = $_REQUEST["direccion"];
         $this->ndormitorios = $_REQUEST["ndormitorios"];
         $this->precio = $_REQUEST["precio"];
+        $this->tamaño = $_REQUEST["tamaño"];
+        $this->extras = $_REQUEST["extras"];
+        $this->observaciones = $_REQUEST["observaciones"];
 
         $DateAndTime = date('Y-m-d h:i:s a', time());
         $sql = ("INSERT INTO " .self::$TABLA."(tipo,zona,direccion,ndormitorios,precio,tamaño,extras,observaciones,fecha_anuncio)
