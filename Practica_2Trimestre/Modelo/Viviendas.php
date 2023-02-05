@@ -94,7 +94,11 @@ class Viviendas extends CRUD
 
     public function filtroViviendas()
     {
-        $sql = "SELECT * FROM ".self::$TABLA ." WHERE tipo LIKE :tipoFiltro AND zona LIKE :zonaFiltro AND ndormitorios LIKE :ndormitoriosFiltro AND precio BETWEEN :precioFiltro1 AND :precioFiltro2 "; // AND FIND_IN_SET(':extrasFiltro',extras)>0
+        $sql = "SELECT viviendas.id, tipo, zona, direccion, ndormitorios, precio, tamano, GROUP_CONCAT(fotos.foto) as fotos
+         FROM ".self::$TABLA ." LEFT JOIN fotos on fotos.id_vivienda = viviendas.id
+          WHERE tipo LIKE :tipoFiltro AND zona LIKE :zonaFiltro AND ndormitorios LIKE :ndormitoriosFiltro AND precio BETWEEN :precioFiltro1 AND :precioFiltro2 
+          GROUP BY viviendas.id
+         ORDER BY fecha_anuncio DESC "; // AND FIND_IN_SET(':extrasFiltro',extras)>0
         $stmt = $this->conexion->prepare($sql);
         
         if (isset($_REQUEST['selectTipo'])) {
@@ -154,6 +158,19 @@ class Viviendas extends CRUD
         return $registros;
     }
 
+    public function obtieneTodos()
+    {
+        $sql = "SELECT viviendas.id, tipo, zona, direccion, ndormitorios, precio, tamano, GROUP_CONCAT(fotos.foto) as fotos
+         FROM ".self::$TABLA ." LEFT JOIN fotos on fotos.id_vivienda = viviendas.id
+         GROUP BY viviendas.id
+         ORDER BY fecha_anuncio DESC ";
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->execute();
+        
+        $registros = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+        return $registros;
+    }
 }
 
 
