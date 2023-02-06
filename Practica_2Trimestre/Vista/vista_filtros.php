@@ -51,19 +51,13 @@
         <label for="extras">Extras : </label>
             <input type="checkbox" id="checkbox" name="extras[]" value="Piscina">Piscina 
             <input type="checkbox" id="checkbox" name="extras[]" value="Jardin">Jardin
-            <input type="checkbox" id="checkbox" name="extras[]" value="Garaje">Garaje
+            <input type="checkbox" id="checkbox" name="extras[]" value="Garage">Garage
         <br>
         <input type="submit" name="btnBuscarViviendas" value="Buscar Viviendas">
     </form>
     <br>
-
-    <?php mostrarTabla($registrosViviendasFiltro);
-       echo $_REQUEST['extras'][0]?>
+    <?php mostrarTabla($registrosViviendasFiltro);?>
 
     
-    
-    
-
-    <?php echo "<pre>";print_r($_REQUEST); echo "</pre>" ;?>
 </body>
 </html>

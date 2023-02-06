@@ -2,8 +2,10 @@
 
 function mostrarTabla($registros)
 {
-
-    $arraykeys= $registros[0];
+    if (empty($registros)) {
+        echo "<h1>NO HAY DATOS CON ESTA CONSULTA</h1>";
+    } else {
+        $arraykeys= $registros[0];
     echo "<table><tr>";
         foreach ($arraykeys as $key => $value ) {
             echo "<th>".strtoupper($key)."</th>";
@@ -15,12 +17,17 @@ function mostrarTabla($registros)
         foreach ($registros as $key => $value) {
             echo "<tr>";
             foreach($value as $clave => $valor){
-                    echo "<td>".$valor ."</td>";
+
+                    if ($clave=='fotos') {
+                        echo "<td> <a href='../img/".$valor."' target='_blank'>".$valor."</a></td>";
+                    } else {
+                        echo "<td>".$valor ."</td>";
+                    }
             }
             echo "
                     <form action='' method='post'>
-                    <td><input type='submit' name='btnBorrarAdopcion' value='BORRAR'>
-                        <input type='hidden' name='idBorrar' value='".$registros[$key]->id."'></td>
+                    <td><input type='submit' name='btnBorrarVivienda' value='BORRAR'>
+                        <input type='hidden' name='idBorrarVivienda' value='".$registros[$key]->id."'></td>
                     </form>
                     <form action='../Vista/vista_modificar_adopcion.php' method='post'>
                     <td><input type='submit' name='btnModificaAdopcion' value='MODIFICAR'>
@@ -30,6 +37,9 @@ function mostrarTabla($registros)
             echo "</tr>";
         }
         echo "</table>";
+    }
+    
+    
 }
 
 function mostrarTablaUsuarios($registros)

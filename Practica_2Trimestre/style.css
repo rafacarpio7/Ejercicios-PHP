@@ -198,5 +198,20 @@ legend {
     width: 20px;
 }
 
+#insert{
+    width: 500px;
+    background: #b6e2d3;
+    padding-left: 20px;
+    padding-top: 5px;
+    margin: auto;
+    margin-top: 75px;
+    border-radius: 4px;
+
+}
+
+#fotos{
+    width: 300px;
+}
+
 
    

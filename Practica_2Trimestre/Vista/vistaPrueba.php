@@ -14,7 +14,7 @@
 </head>
 <body>
     <?php require_once "../Controlador/controlador_CRUD.php";?>
-    <?php mostrarTabla($registrosViviendas) ?>
+    <?php mostrarTabla($registrosViviendas) ;?>
     
 </body>
 </html>

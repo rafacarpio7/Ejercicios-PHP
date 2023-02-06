@@ -7,7 +7,21 @@ $registrosViviendas = $instanciaViviendas->obtieneTodos();
 
 $arraykeys= $registrosViviendas[0];
 
-$registrosViviendasFiltro= $instanciaViviendas->filtroViviendas();
+if (isset($_REQUEST['btnBuscarViviendas'])) {
+    $registrosViviendasFiltro= $instanciaViviendas->filtroViviendas();
+} 
+
+if (isset($_REQUEST['btnInsertar'])) {
+    $instanciaViviendas->crear();
+    if (empty($_FILES['fotos'])) {
+        $fotosInsertar=$instanciaViviendas->guardarImagenes();
+    $instanciaViviendas->insertarImagendb($fotosInsertar);
+    }
+}
+
+if (isset($_REQUEST['btnBorrarVivienda'])) {
+    $instanciaViviendas->borra($_REQUEST['idBorrarVivienda']);
+}
 
 
 ?>
