@@ -1,5 +1,5 @@
 <?php
-include_once "../Modelo/Viviendas.php";
+require("../Modelo/Viviendas.php");
 
 $instanciaViviendas = new Viviendas();
 
@@ -24,11 +24,11 @@ if (isset($_REQUEST['btnBorrarVivienda'])) {
 }
 
 if(isset($_REQUEST['btnModificaVivienda'])){
-    $_SESSION['idViviendaModificiar'] = $_REQUEST['idModificar'];
+    $instanciaViviendas->__set('id', $_REQUEST['idModificar']);
+    echo $instanciaViviendas->__get('id');
    if(isset($_REQUEST['btnModificar'])){
+        $instanciaViviendas->__set('id', $_REQUEST['idModificar']);
         $instanciaViviendas->actualizar();
-   }else{
-
    }
 }
 

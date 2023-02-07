@@ -88,7 +88,7 @@ class Viviendas extends CRUD
                     zona=:zona,direccion=:direccion,ndormitorios=:ndormitorios,precio=:precio,tamano=:tamaño,extras=:extras,observaciones=:observaciones
                     WHERE id=:idAnterior;";
         $stmt = $this->conexion->prepare($sql);
-        
+        $stmt->bindParam(':idAnterior', $_REQUEST['idModificar']);
         $stmt->bindParam(':tipo', $_REQUEST["selectTipo"]);
         $stmt->bindParam(':zona', $_REQUEST["selectZona"]);
         $stmt->bindParam(':direccion', $_REQUEST["direccion"]);
@@ -114,8 +114,7 @@ class Viviendas extends CRUD
         } else {
             $stmt->bindParam(':extras', $actualizaExtras);
         }
-        $stmt->bindParam(':observaciones', $_REQUEST['observaciones']);
-        $stmt->bindParam(':idAnterior', $_SESSION['idViviendaModificiar']);
+        $stmt->bindParam(':observaciones', $this->observaciones);
         if($stmt->execute()){
             
         }
