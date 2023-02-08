@@ -19,7 +19,16 @@ function mostrarTabla($registros)
             foreach($value as $clave => $valor){
 
                     if ($clave=='fotos') {
-                        echo "<td> <a href='../img/".$valor."' target='_blank'>".$valor."</a></td>";
+                        if (str_contains($valor,",")) {
+                        $fotos = explode(",", $valor);
+                        echo "<td>";
+                        foreach($fotos as $fotoEnlace){
+                            echo "<a href='../img/".$fotoEnlace."' target='_blank'>".$fotoEnlace."</a><br>";
+                        }
+                        echo "</td>";
+                        } else {
+                            echo "<td> <a href='../img/".$valor."' target='_blank'>".$valor."</a></td>";
+                        }
                     } else {
                         echo "<td>".$valor ."</td>";
                     }
@@ -40,6 +49,8 @@ function mostrarTabla($registros)
     }
 
     // funciones  paginacion
+
+    
 
     // dinamizacion paginacion
 

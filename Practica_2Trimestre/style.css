@@ -8,6 +8,18 @@
     
     
 }
+#usuario{
+    padding-left: 5px;
+    padding-right: 5px;
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+#cookie{
+    padding-left: 5px;
+}
+
 
 li,a,button {
     font-family: 'Ubuntu', sans-serif;

@@ -17,20 +17,20 @@
 </head>
 <body>
     <?php require_once "../Controlador/controlador_CRUD.php";?>
-    <?php mostrarTabla($registrosViviendas) ;?>
+    <?php mostrarTabla($registrosViviendas) ;
 
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                    <a class="page-link" href="#">Previous</a>
-                    </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                    </li>
+
+    echo "<nav aria-label='Page navigation example'>
+            <ul class='pagination justify-content-center'>";
+                    
+
+                for ($i=0; $i < $paginasTotales ; $i++) { 
+                    echo "<li class='page-item'><a class='page-link' href='../Vista/vistaPrueba.php?pagina=".$i."'>".$i."</a></li>";
+                }    
+    echo "            
             </ul>
-        </nav>
+        </nav>";?>
+
+        
 </body>
 </html>

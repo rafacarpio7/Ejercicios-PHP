@@ -16,10 +16,10 @@
                         <li><a href="../Vista/vista_filtros.php"> Filtrar </a></li>
                     </ul>
                 </nav>
-                <p>  '.$_SESSION['idUsuario'].'  </p>';
+                <p id="usuario">'.$_SESSION['idUsuario'].'</p>';
                 
                 if (isset($_COOKIE[$usuarioCookie])) {
-                    echo '<p>   '.$_COOKIE[$usuarioCookie].'   </p>';
+                    echo '<p id="cookie">'.$_COOKIE[$usuarioCookie].'</p>';
                 }
                 echo '<a class="tag" href="../Controlador/logout.php"><button>Desconectar</button></a>
             </header>';

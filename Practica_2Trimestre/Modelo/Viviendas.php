@@ -29,10 +29,10 @@ class Viviendas extends CRUD
     {
         $this->$propiedad=$nuevoValor;
     }
-
+    
     public function crear()
     {   
-        $sql="SELECT MAX(id) from viviendas;";
+        $sql="SELECT MAX(id) from " .self::$TABLA.";";
         $stmt = $this->conexion->prepare($sql);
         $stmt->execute();
         $registros=$stmt->fetch();
@@ -81,12 +81,14 @@ class Viviendas extends CRUD
         
     }
 
+    
+
     public function actualizar()
     {
 
-        $sql = "UPDATE ".self::$TABLA." tipo=:tipo,
+        $sql = "UPDATE ".self::$TABLA." SET tipo=:tipo,
                     zona=:zona,direccion=:direccion,ndormitorios=:ndormitorios,precio=:precio,tamano=:tamaño,extras=:extras,observaciones=:observaciones
-                    WHERE id=:idAnterior;";
+                    WHERE id=:idAnterior";
         $stmt = $this->conexion->prepare($sql);
         
         $stmt->bindParam(':tipo', $_REQUEST["selectTipo"]);
@@ -95,6 +97,7 @@ class Viviendas extends CRUD
         $stmt->bindParam(':ndormitorios', $_REQUEST["dormitorios"]);
         $stmt->bindParam(':precio', $_REQUEST["precio"]);
         $stmt->bindParam(':tamaño', $_REQUEST["tamano"]);
+        
         $actualizaExtras = 0;
         if (isset($_REQUEST['extras'])) {
             foreach ($_REQUEST['extras'] as $value) {
@@ -115,7 +118,8 @@ class Viviendas extends CRUD
             $stmt->bindParam(':extras', $actualizaExtras);
         }
         $stmt->bindParam(':observaciones', $_REQUEST['observaciones']);
-        $stmt->bindParam(':idAnterior', $_SESSION['idViviendaModificiar']);
+        $stmt->bindParam(':idAnterior', $_REQUEST['idViviendaModificar']);
+
         if($stmt->execute()){
             
         }
@@ -203,14 +207,22 @@ class Viviendas extends CRUD
         }
 
     }
+    public function totalViviendas()
+    {
+        $stmt = $this->conexion->prepare("SELECT COUNT(*) FROM " .self::$TABLA."");
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
 
-    public function obtieneTodos()
+    public function obtieneTodasViviendas($incio, $limite)
     {
         $sql = "SELECT viviendas.id, tipo, zona, direccion, ndormitorios, precio, tamano,extras, GROUP_CONCAT(fotos.foto) as fotos
          FROM ".self::$TABLA ." LEFT JOIN fotos on fotos.id_vivienda = viviendas.id
          GROUP BY viviendas.id
-         ORDER BY fecha_anuncio DESC ";
+         ORDER BY fecha_anuncio DESC LIMIT :inicio, :final";
         $stmt = $this->conexion->prepare($sql);
+        $stmt->bindValue(":inicio", $incio, PDO::PARAM_INT);
+        $stmt->bindValue(":final", $limite, PDO::PARAM_INT);
         $stmt->execute();
         
         $registros = $stmt->fetchAll(PDO::FETCH_OBJ);
