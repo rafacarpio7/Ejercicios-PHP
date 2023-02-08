@@ -38,7 +38,14 @@ function mostrarTabla($registros)
         }
         echo "</table>";
     }
-    
+
+    // funciones  paginacion
+
+    // dinamizacion paginacion
+
+    // clase paginacion
+
+    // 
     
 }
 
