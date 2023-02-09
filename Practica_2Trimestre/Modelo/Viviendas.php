@@ -74,21 +74,27 @@ class Viviendas extends CRUD
         $stmt->bindParam(':observaciones', $_REQUEST["observaciones"]);
 
         
-        if ($stmt->execute()) {
-           // header("Location: ../Vista/vistaPrueba.php");
-        }
+            if ($stmt->execute()) {
+                header("Location: ../Vista/vistaPrueba.php");
+            } else {
+                header("Location: ../Vista/vistaPrueba.php?mensajeErrorCrear=No se ha creado el registro");
+            }
         
         
     }
 
-    
-
     public function actualizar()
     {
+        
+    }
 
-        $sql = "UPDATE ".self::$TABLA." SET tipo=:tipo,
-                    zona=:zona,direccion=:direccion,ndormitorios=:ndormitorios,precio=:precio,tamano=:tamaño,extras=:extras,observaciones=:observaciones
-                    WHERE id=:idAnterior";
+    public function actualizarVivienda()
+    {
+
+        $sql = "UPDATE viviendas SET tipo=:tipo,
+        zona=:zona,direccion=:direccion,ndormitorios=:ndormitorios,precio=:precio,tamano=:tamano,extras=:extras,observaciones=:observaciones
+        WHERE id=:idAnterior";
+        
         $stmt = $this->conexion->prepare($sql);
         
         $stmt->bindParam(':tipo', $_REQUEST["selectTipo"]);
@@ -96,7 +102,7 @@ class Viviendas extends CRUD
         $stmt->bindParam(':direccion', $_REQUEST["direccion"]);
         $stmt->bindParam(':ndormitorios', $_REQUEST["dormitorios"]);
         $stmt->bindParam(':precio', $_REQUEST["precio"]);
-        $stmt->bindParam(':tamaño', $_REQUEST["tamano"]);
+        $stmt->bindParam(':tamano', $_REQUEST["tamano"]);
         
         $actualizaExtras = 0;
         if (isset($_REQUEST['extras'])) {
@@ -120,15 +126,21 @@ class Viviendas extends CRUD
         $stmt->bindParam(':observaciones', $_REQUEST['observaciones']);
         $stmt->bindParam(':idAnterior', $_REQUEST['idViviendaModificar']);
 
-        if($stmt->execute()){
-            
+        if ($stmt->execute()) {
+            header("Location: ../Vista/vistaPrueba.php");
+        } else {
+            header("Location: ../Vista/vistaPrueba.php?mensajeErrorModificar=No se ha modificado el registro");
         }
+        
+        
+            
+        
     }
 
     public function filtroViviendas()
     {
         
-        $sql = "SELECT viviendas.id, tipo, zona, direccion, ndormitorios, precio, tamano,extras, GROUP_CONCAT(fotos.foto) as fotos
+        $sql = "SELECT viviendas.id, tipo, zona, direccion, ndormitorios, precio, tamano,extras, GROUP_CONCAT(fotos.foto) as fotos,observaciones
          FROM ".self::$TABLA ." LEFT JOIN fotos on fotos.id_vivienda = viviendas.id
           WHERE tipo LIKE :tipoFiltro AND zona LIKE :zonaFiltro AND ndormitorios LIKE :ndormitoriosFiltro AND precio BETWEEN :precioFiltro1 AND :precioFiltro2 
           ";
@@ -152,7 +164,7 @@ class Viviendas extends CRUD
          }
 
         $sql = $sql . "GROUP BY viviendas.id
-                ORDER BY fecha_anuncio DESC  ";
+                ORDER BY fecha_anuncio DESC, viviendas.Id DESC";
 
         $stmt = $this->conexion->prepare($sql);
         
@@ -216,10 +228,10 @@ class Viviendas extends CRUD
 
     public function obtieneTodasViviendas($incio, $limite)
     {
-        $sql = "SELECT viviendas.id, tipo, zona, direccion, ndormitorios, precio, tamano,extras, GROUP_CONCAT(fotos.foto) as fotos
+        $sql = "SELECT viviendas.id, tipo, zona, direccion, ndormitorios, precio, tamano,extras, GROUP_CONCAT(fotos.foto) as fotos ,observaciones
          FROM ".self::$TABLA ." LEFT JOIN fotos on fotos.id_vivienda = viviendas.id
          GROUP BY viviendas.id
-         ORDER BY fecha_anuncio DESC LIMIT :inicio, :final";
+         ORDER BY fecha_anuncio DESC, viviendas.Id DESC LIMIT :inicio, :final";
         $stmt = $this->conexion->prepare($sql);
         $stmt->bindValue(":inicio", $incio, PDO::PARAM_INT);
         $stmt->bindValue(":final", $limite, PDO::PARAM_INT);
@@ -235,28 +247,25 @@ class Viviendas extends CRUD
         $contador=0;
         foreach($_FILES["fotos"]['tmp_name'] as $key => $tmp_name)
         {
-            //condicional si el fuchero existe
             if($_FILES["fotos"]["name"][$key]) {
-                // Nombres de archivos de temporales
+
                 $archivonombre =$_FILES["fotos"]["name"][$key]; 
                 $fuente = $_FILES["fotos"]["tmp_name"][$key]; 
                 
-                $carpeta = 'img/'; //Declaramos el nombre de la carpeta que guardara los archivos
+                $carpeta = '../img/'; 
                 
                 if(!file_exists($carpeta)){
                     mkdir($carpeta, 0777) or die("Hubo un error al crear el directorio de almacenamiento");	
                 }
                 
                 $dir=opendir($carpeta);
-                $target_path = '../'.$carpeta.'/'.$archivonombre; //indicamos la ruta de destino de los archivos
+                $target_path = $carpeta.$archivonombre; 
                 
         
                 if(move_uploaded_file($fuente, $target_path)) {	
-                    echo "Los archivos $archivonombre se han cargado de forma correcta.<br>";
-                    } else {	
-                    echo "Se ha producido un error, por favor revise los archivos e intentelo de nuevo.<br>";
+                    
                 }
-                closedir($dir); //Cerramos la conexion con la carpeta destino
+                closedir($dir); 
             }
             $arrayNombre[$contador]=$archivonombre;
             $contador++;
@@ -266,6 +275,7 @@ class Viviendas extends CRUD
 
     public function insertarImagendb($arrayNombre) {
         foreach($arrayNombre as $valor){
+
             $sql = ("INSERT INTO fotos (id_vivienda,foto) VALUES (:A, :B)");
             $stmt = $this->conexion->prepare($sql);
             $stmt->bindParam(':A', $this->Id);

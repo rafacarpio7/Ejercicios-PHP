@@ -26,13 +26,13 @@ class Usuarios extends CRUD
 
     public function registro()
     {
-       
+        $contraseña = password_hash($_REQUEST['contraseñaRegistro'], PASSWORD_DEFAULT);
         $sql = ("INSERT INTO " .self::$TABLA."(id_usuario,password)
                  VALUES (:nombre,:password)");
         $stmt = $this->conexion->prepare($sql);
         
         $stmt->bindParam(':nombre', $_REQUEST["usuarioRegistro"]);
-        $stmt->bindParam(':password', password_hash($_REQUEST['contraseñaRegistro'],PASSWORD_DEFAULT));
+        $stmt->bindParam(':password',$contraseña );
 
         return $stmt->execute();
 
@@ -42,9 +42,22 @@ class Usuarios extends CRUD
     {
         $statement = $this->conexion->prepare("SELECT id_usuario FROM ".self::$TABLA." ");
         if ($statement->execute()) {
-            return $statement->fetchAll(PDO::FETCH_OBJ);
+            $registros = $statement->fetchAll(PDO::FETCH_OBJ);
+            return $registros;
         }
 
+    }
+
+    public function compruebaUsuarioRegistro()
+    {
+
+        $sql = "SELECT id_usuario, password FROM usuarios WHERE id_usuario = ?";
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bindParam(1, $_REQUEST['usuarioRegistro']);
+        $stmt->execute();
+        $registros = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $registros;
     }
 
     public function login()
@@ -75,6 +88,14 @@ class Usuarios extends CRUD
 
         return $registros;
         
+    }
+
+    public function borraUsuario()
+    {
+        $sql = "DELETE FROM ".self::$TABLA." WHERE id_usuario=:usuario;";
+        $statement = $this->conexion->prepare($sql);
+        $statement->bindParam(':usuario', $_REQUEST['idBorrarUsuario']);
+        $statement->execute();
     }
 
 }

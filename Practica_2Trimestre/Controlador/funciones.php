@@ -23,11 +23,11 @@ function mostrarTabla($registros)
                         $fotos = explode(",", $valor);
                         echo "<td>";
                         foreach($fotos as $fotoEnlace){
-                            echo "<a href='../img/".$fotoEnlace."' target='_blank'>".$fotoEnlace."</a><br>";
+                            echo "<a href='../img/".$fotoEnlace."' target='_blank'>Foto</a><br>";
                         }
                         echo "</td>";
                         } else {
-                            echo "<td> <a href='../img/".$valor."' target='_blank'>".$valor."</a></td>";
+                            echo "<td> <a href='../img/".$valor."' target='_blank'>Foto</a></td>";
                         }
                     } else {
                         echo "<td>".$valor ."</td>";
@@ -64,82 +64,45 @@ function mostrarTablaUsuarios($registros)
 {
 
     $arraykeys= $registros[0];
-    echo "<table><tr>";
+    echo "<table style='width:500px;'><tr>";
         foreach ($arraykeys as $key => $value ) {
             echo "<th>".strtoupper($key)."</th>";
         }
         echo "<form action='../Vista/registro.php' method='post'>
-        <th colspan='2'><input type='submit' name='btnAñadirAdopcion' value='Añadir'></th>
+        <th><input type='submit' name='btnAñadirUsuario' value='Añadir'></th>
               </form>";
         echo "</tr>";
         foreach ($registros as $key => $value) {
             echo "<tr>";
             foreach($value as $clave => $valor){
                     echo "<td>".$valor ."</td>";
-            }
 
-            if ($valor=="admin") {
-                # code...
-            }else{
-                echo "
-                <form action='' method='post'>
-                <td><input type='submit' name='btnBorrarAdopcion' value='BORRAR'>
-                    <input type='hidden' name='idBorrar' value='".$registros[$key]->id_usuario."'></td>
-                </form>
-                    ";
-                echo "</tr>";
-            }
-            
+                    if ($valor=="admin") {
+                        echo "<td> GESTIONA TUS USUARIOS </td>";
+                        echo "</tr>";
+                        
+                    }else{
+                        echo "
+                        <form action='' method='post'>
+                        <td><input type='submit' name='btnBorrarUsuario' value='BORRAR'>
+                            <input type='hidden' name='idBorrarUsuario' value='".$registros[$key]->id_usuario."'></td>
+                        </form>
+                            ";
+                        echo "</tr>";
+                    }
+            }  
         }
         echo "</table>";
 }
 
-
-
-
-function formFiltros($registros)
-{
-    $arraykeys= $registros[0];
-    
-    echo "<form action=''>";
-    foreach ($registros as $key => $value) {
-        
-
-        foreach ($value as $clave => $valor) {
-            print_r($value);
-            
-            if ($clave='tipo') {
-                
-            } else {
-                # code...
-            }
-            
-            //echo $clave;
-           // echo $value->zona;
-        }
+function generadorContraseña() {
+    $caracteres = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    $contraseña = '';
+    for ($i = 0; $i < 4; $i++) {
+      $contraseña .= $caracteres[rand(0, strlen($caracteres) - 1)];
     }
-    
-    echo "<label for='dormitorios'>Numero de dormitorios : </label>
-    <input type='radio' id='radio' name='dormitorios' value='1'><span>1</span>
-    <input type='radio' id='radio' name='dormitorios' value='2'>2
-    <input type='radio' id='radio' name='dormitorios' value='3'>3
-    <input type='radio' id='radio' name='dormitorios' value='4'>4
-    <input type='radio' id='radio' name='dormitorios' value='5'>5 o mas <br>
+    return $contraseña;
+  }
 
-    <label for='precios'>Precio : </label>
-    <input type='radio' id='radio' name='precio' value='opcion1'>-100.000
-    <input type='radio' id='radio' name='precio' value='opcion2'>100.000-200.000
-    <input type='radio' id='radio' name='precio' value='opcion3'>200.000-300.000
-    <input type='radio' id='radio' name='precio' value='opcion4'>+300.000
-    <br>
-    <label for='extras'>Extras : </label>
-        <input type='checkbox' id='checkbox' name='extras[]' value='Piscina'>Piscina 
-        <input type='checkbox' id='checkbox' name='extras[] value='Jardin'> Jardin
-        <input type='checkbox' id='checkbox' name='extras[] value='Garaje'> Garaje
-    <br>
-    <input type='submit' name='btnBuscarViviendas' value='Buscar Viviendas'>";
-    echo "";
-    echo    "</form>";
-}
 
 ?>

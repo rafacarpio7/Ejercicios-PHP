@@ -15,11 +15,11 @@
             <input type="text" name="idLogin" required><br>
             Contraseña :
             <input type="password" name="contraseña" required><br>
-            <p><?=$mensaje??''?></p>
+            <p><?=$_GET['mensaje']??''?></p>
             <input type="submit" name="btnLogin" value="LOGIN">
-            <a href="./registro.php">
+            <!-- <a href="./registro.php">
             <input type="button" name="btnRegistro" value="REGISTRO">
-            </a>
+            </a> -->
         
     </form>
 </body>

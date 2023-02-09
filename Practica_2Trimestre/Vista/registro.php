@@ -1,3 +1,8 @@
+<?php
+        include_once "../Controlador/funciones.php";
+        include "../Modelo/Usuarios.php";
+        include_once "../Controlador/controlador_registro.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,16 +13,23 @@
     <title>Registro</title>
 </head>
 <body>
-<form action="../Controlador/controlador_registro.php" method="post">
+
+<?php require_once "../Controlador/controlador_CRUD.php";?>
+<form action="" method="post">
         <legend>REGISTRO</legend>
-        Nombre : 
+        Id Usuario : 
         <input type="text" placeholder="usuario" name="usuarioRegistro" required><br>
-        Apellido :
-        <input type="password" placeholder="contraseña" name="contraseñaRegistro" required><br>
+        
+        <input type="hidden" name="contraseñaRegistro" value=<?=generadorContraseña()?>><br>
         <input type="submit" name="btnRegistro" value="REGISTRATE">
-        <a href="./login.php">
-            <input type="button" name="btnLogin" value="LOGIN">
-        </a>
     </form>
+
+    <?php
+     if (isset($_REQUEST['contraseñaRegistro'])) {
+        echo "<h2>Su contraseña autogenerada es ".$_REQUEST['contraseñaRegistro']." </h2>";
+        echo "<h2>No se olvide de apuntarla antes de continuar</h2>";
+     }
+     
+    ?>
 </body>
 </html>

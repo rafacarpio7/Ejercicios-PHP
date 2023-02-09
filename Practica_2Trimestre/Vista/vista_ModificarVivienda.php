@@ -75,6 +75,6 @@
         <br>
         <input type="submit" name="btnModificar" id="btnModificar" value="Modificar">
     </form>
-    <?php print_r($_REQUEST) ?>
+    
 </body>
 </html>

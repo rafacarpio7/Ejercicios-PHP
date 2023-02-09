@@ -31,6 +31,9 @@
             </ul>
         </nav>";?>
 
+    <h2><?=$_GET['mensajeErrorModificar']?? ''?></h2>
+    <h2><?=$_GET['mensajeErrorCrear']?? ''?></h2>
+
         
 </body>
 </html>

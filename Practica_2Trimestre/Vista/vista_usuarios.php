@@ -15,6 +15,7 @@
 <body>
     <?php require_once "../Controlador/controlador_CRUD.php";?>
     <?php mostrarTablaUsuarios($registrosUsuarios) ?>
+    <h2><?=$_GET['mensajeError'] ?? ''?></h2>
     
 </body>
 </html>

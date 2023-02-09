@@ -11,7 +11,6 @@ if (isset($_GET['pagina'])) {
     }else {
         $inicio = ($_GET['pagina']) * $limite;
     }
-    
 }else{
     $inicio = 0;
 }
@@ -32,9 +31,9 @@ if (isset($_REQUEST['btnBuscarViviendas'])) {
 
 if (isset($_REQUEST['btnInsertar'])) {
     $instanciaViviendas->crear();
-    if (empty($_FILES['fotos'])) {
+    if (!empty($_FILES['fotos'])) {
         $fotosInsertar=$instanciaViviendas->guardarImagenes();
-    $instanciaViviendas->insertarImagendb($fotosInsertar);
+        $instanciaViviendas->insertarImagendb($fotosInsertar);
     }
 }
 
@@ -44,12 +43,10 @@ if (isset($_REQUEST['btnBorrarVivienda'])) {
 
 if(isset($_REQUEST['btnModificaVivienda'])){
     $registrosParaModificar = $instanciaViviendas->obtieneDeID($_REQUEST['idModificar']);
-    
-   if(isset($_REQUEST['btnModificar'])){
-        $instanciaViviendas->actualizar();
-   }else{
 
-   }
+}
+if(isset($_REQUEST['btnModificar'])){
+    $instanciaViviendas->actualizarVivienda();
 }
 
 
