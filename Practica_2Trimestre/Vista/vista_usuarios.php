@@ -2,6 +2,12 @@
         include "../Modelo/Viviendas.php";
         include_once "../Controlador/controlador_usuarios.php";
         include_once "../Controlador/funciones.php";
+        if (session_status()== PHP_SESSION_NONE) {
+            session_start();
+            if ($_SESSION['idUsuario']!='admin') {
+                header("Location: ../index.php");
+            }  
+        }    
 ?>
 <!DOCTYPE html>
 <html lang="en">

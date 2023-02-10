@@ -75,9 +75,9 @@ class Viviendas extends CRUD
 
         
             if ($stmt->execute()) {
-                header("Location: ../Vista/vistaPrueba.php");
+                header("Location: ../Vista/vista_viviendas.php");
             } else {
-                header("Location: ../Vista/vistaPrueba.php?mensajeErrorCrear=No se ha creado el registro");
+                header("Location: ../Vista/vista_viviendas.php?mensajeErrorCrear=No se ha creado el registro");
             }
         
         
@@ -127,9 +127,9 @@ class Viviendas extends CRUD
         $stmt->bindParam(':idAnterior', $_REQUEST['idViviendaModificar']);
 
         if ($stmt->execute()) {
-            header("Location: ../Vista/vistaPrueba.php");
+            header("Location: ../Vista/vista_viviendas.php");
         } else {
-            header("Location: ../Vista/vistaPrueba.php?mensajeErrorModificar=No se ha modificado el registro");
+            header("Location: ../Vista/vista_viviendas.php?mensajeErrorModificar=No se ha modificado el registro");
         }
         
         

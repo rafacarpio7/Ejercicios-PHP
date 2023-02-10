@@ -25,7 +25,7 @@
                     
 
                 for ($i=0; $i < $paginasTotales ; $i++) { 
-                    echo "<li class='page-item'><a class='page-link' href='../Vista/vistaPrueba.php?pagina=".$i."'>".$i."</a></li>";
+                    echo "<li class='page-item'><a class='page-link' href='../Vista/vista_viviendas.php?pagina=".$i."'>".$i."</a></li>";
                 }    
     echo "            
             </ul>

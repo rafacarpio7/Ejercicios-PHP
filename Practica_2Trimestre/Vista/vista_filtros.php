@@ -3,7 +3,6 @@
         include "../Modelo/Viviendas.php";
         include_once "../Controlador/controlador_viviendas.php";
         include_once "../Controlador/funciones.php";
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

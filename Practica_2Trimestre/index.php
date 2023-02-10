@@ -1,4 +1,4 @@
 <?php
-header("Location: Vista/vistaPrueba.php");
+header("Location: Vista/vista_viviendas.php");
 
 ?>
