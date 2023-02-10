@@ -31,11 +31,6 @@ abstract class CRUD extends Conexion{
         $statement = $this->conexion->prepare($sql);
         $statement->execute();
     }
-    
-    public function busca($filtros)
-    {
-        # code...
-    }
 
     public abstract function crear();
 
