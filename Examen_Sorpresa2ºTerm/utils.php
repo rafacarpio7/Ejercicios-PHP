@@ -84,16 +84,6 @@
         }
         echo "</table>";
     }
-
-    // funciones  paginacion
-
-    
-
-    // dinamizacion paginacion
-
-    // clase paginacion
-
-    // 
-    
+   
 }
  ?>
