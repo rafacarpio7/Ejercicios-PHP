@@ -112,7 +112,7 @@ try {
     
 
 
-
+print_r($_SESSION);
 
     ?>
 
