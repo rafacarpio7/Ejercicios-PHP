@@ -70,16 +70,7 @@
                         echo "<td>".$valor ."</td>";
                     }
             }
-            echo "
-                    <form action='' method='post'>
-                    <td><input type='submit' name='btnBorrarVivienda' value='BORRAR'>
-                        <input type='hidden' name='idBorrarVivienda' value='".$registros[$key]->id."'></td>
-                    </form>
-                    <form action='../Vista/vista_ModificarVivienda.php' method='post'>
-                    <td><input type='submit' name='btnModificaVivienda' value='MODIFICAR'>
-                        <input type='hidden' name='idModificar' value='".$registros[$key]->id."'></td>
-                    </form>  
-                ";
+            
             echo "</tr>";
         }
         echo "</table>";

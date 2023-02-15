@@ -23,9 +23,28 @@
 
 </form>
     <?php
-        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            include_once "post.php";
+      include_once "utils.php";
+
+      if (isset($_GET['zona'])) {
+        if ($_GET['zona']=="vacio") {
+          $uri= "http://localhost/Ejercicios-PHP/Examen_Sorpresa2%c2%baTerm/post.php";
+          $ficheroJSON = file_get_contents($uri);
+          $registros = json_decode($ficheroJSON,true);
+          mostrarTabla($registros);
+        } else {
+          $uri= "http://localhost/Ejercicios-PHP/Examen_Sorpresa2%c2%baTerm/post.php?zona=".$_GET['zona'];
+          $ficheroJSON = file_get_contents($uri);
+          $registros = json_decode($ficheroJSON,true);
+          mostrarTabla($registros);
         }
+      } else {
+        # code...
+      }
+      
+      
+      
+
+       
         
     ?>
 </body>
