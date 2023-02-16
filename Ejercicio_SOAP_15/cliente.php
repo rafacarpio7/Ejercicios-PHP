@@ -26,8 +26,6 @@
 
 $opciones = array('uri'=>'http://localhost/Ejercicios-PHP/Ejercicio_SOAP_15/',
                     'location'=>'http://localhost/Ejercicios-PHP/Ejercicio_SOAP_15/servidor.php');
-$opciones = array('uri'=>'http://localhost/Ejercicios-PHP/Ejercicio_SOAP_15/',
-                    'location'=>'http://localhost/Ejercicios-PHP/Ejercicio_SOAP_15/servidor.php');
 
 try {
     $cliente = new SoapClient(null,$opciones);
