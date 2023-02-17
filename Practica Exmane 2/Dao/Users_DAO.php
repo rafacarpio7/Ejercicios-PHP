@@ -16,6 +16,7 @@ class Users_DAO extends DAO{
 
 
             $contraseña = password_hash($instancia->contraseña, PASSWORD_DEFAULT);
+            
             $sql = ("INSERT INTO users (name,password)
                      VALUES (:nombre,:password)");
             $stmt = $this->conexion->prepare($sql);

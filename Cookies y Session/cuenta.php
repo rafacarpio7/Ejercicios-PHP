@@ -39,6 +39,6 @@ session_start();
         }
         echo '<h2>Total Cuenta : '.$totalCuenta.'</h2>'
     ?>
-    <a class="tag" href="logout.php"><button>Cerrar Mesa</button></a>
+    <a class="tag" href="nuevologout.php"><button>Cerrar Mesa</button></a>
 </body>
 </html>
